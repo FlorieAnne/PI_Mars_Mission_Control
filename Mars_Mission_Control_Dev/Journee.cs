@@ -8,36 +8,39 @@ namespace PI_Mars_Mission_Control
 {
     public class Journee
     {
-		private Dates numJour;
-		public Dates NumJour
+		// Accesseurs & Propriétés
+		private int _numJour;
+		public int NumJour
         {
-            get { return numJour; }
-            set { numJour = value; }
+            get { return _numJour; }
+            set { _numJour = value; }
         }
 
-		private int cptJour;
-		public int CptJour
+		// Variables statiques
+		private static List<Journee> _listeJournees;
+		public static List<Journee> ListeJournees
 		{
-			get { return cptJour; }
-			set { cptJour = value; }
+			get { return _listeJournees; }
+			set { _listeJournees = value; }
+		}    
+
+		private static int _cptJour;
+		public static int CptJour
+		{
+			get { return _cptJour; }
+			set { _cptJour = value; }
 		}
 		
 
+		// Constructeur 
 		public Journee()
-        {
-			Dates date = new Dates();
-			
-			++CptJour;
-			
-			NumJour = date.Jour = CptJour;
+        {			
+			// A chaque création d'objet on incrémente le compteur statique
+			++CptJour;			
+			NumJour = CptJour;
+			ListeJournees.Add(this);
         }
-
-        private static List<Journee> listeJournees;
-        public static List<Journee> ListeJournees
-        {
-            get { return listeJournees; }
-            set { listeJournees = value; }
-        }      
+				  
 
         public string CompteRendu
         {

@@ -23,7 +23,7 @@ namespace PI_Mars_Mission_Control
             }
 		}
 
-		public static Dates NumJour
+		public static int NumJour
 		{
 			get
 			{
