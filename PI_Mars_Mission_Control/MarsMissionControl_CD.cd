@@ -4,7 +4,8 @@
     <Position X="2.75" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAAAAAAAAAIAAAAAAAAAAACBAAAAAAAAAAAA=</HashCode>
-      <FileName>Heure.cs</FileName>
+      <FileName>Dates.cs</FileName>
+      <NewMemberFileName>Date.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PI_Mars_Mission_Control.Calendrier">

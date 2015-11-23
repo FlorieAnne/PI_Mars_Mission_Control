@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PI_Mars_Mission_Control
 {
-	public class Dates
+    public class Dates
     {
         public Dates()
         {

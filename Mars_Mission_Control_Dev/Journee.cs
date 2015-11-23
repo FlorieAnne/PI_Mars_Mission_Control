@@ -8,24 +8,28 @@ namespace PI_Mars_Mission_Control
 {
     public class Journee
     {
-        private int index_jour;
-    //    private Button btn_jour;
-
-                public int Index_jour
+		private Dates numJour;
+		public Dates NumJour
         {
-            get { return index_jour; }
-            set { index_jour = value; }
+            get { return numJour; }
+            set { numJour = value; }
         }
 
-     //   public Button Btn_jour
-     //   {
-     //       get { return btn_jour; }
-     //       set { btn_jour = value; }
-     //   }
+		private int cptJour;
+		public int CptJour
+		{
+			get { return cptJour; }
+			set { cptJour = value; }
+		}
+		
 
-        public Journee(int index_jour)
+		public Journee()
         {
-            this.index_jour = index_jour;
+			Dates date = new Dates();
+			
+			++CptJour;
+			
+			NumJour = date.Jour = CptJour;
         }
 
         private static List<Journee> listeJournees;
@@ -46,16 +50,6 @@ namespace PI_Mars_Mission_Control
             }
 		}
 
-		public static Dates NumJour
-		{
-			get
-			{
-				throw new System.NotImplementedException();
-			}
-			set
-			{
-			}
-		}
 
 		public List<Activite> ListActiviteJournee
 		{
@@ -73,6 +67,6 @@ namespace PI_Mars_Mission_Control
             throw new System.NotImplementedException();
         }
 
-        public Button Btn_journee { get; set; }
+        public Button Btn_jour { get; set; }
     }
 }

@@ -131,5 +131,10 @@ namespace PI_Mars_Mission_Control
                 }
             }
         }
+
+		private void label1_Click(object sender, EventArgs e)
+		{
+
+		}
     }
 }
