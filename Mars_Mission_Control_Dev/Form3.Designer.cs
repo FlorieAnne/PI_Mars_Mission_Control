@@ -1,4 +1,4 @@
-﻿namespace PJINFO1
+﻿namespace PI_Mars_Mission_Control
 {
     partial class Form3
     {
@@ -59,6 +59,7 @@
             this.button1.TabIndex = 10;
             this.button1.Text = "Retour au Jour";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
