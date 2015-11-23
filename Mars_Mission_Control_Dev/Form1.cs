@@ -15,6 +15,7 @@ namespace PI_Mars_Mission_Control
         private int jourActuel = 25;
         private int posX = 0;
         private int posY = 0;
+        public Button btn_jour { get; set; }
 
         public Form1()
         {
@@ -22,15 +23,15 @@ namespace PI_Mars_Mission_Control
             Journee.ListeJournees = new List<Journee>();
             period = 1;
 
-            for (int i = 1; i <= 500; i++)
+            for (int i = 1; i <= 50; i++)
             {
                 Journee jour = new Journee(i);
 
-                jour.Btn_jour = new Button();
+                btn_jour = new Button();
 
-                jour.Btn_jour.Size = new Size(40, 40);
-                jour.Btn_jour.Text = jour.Btn_jour.Name = i.ToString();                 
-                jour.Btn_jour.Location = new Point(60 + (posX * 40), 60 + (posY * 40));
+                btn_jour.Size = new Size(40, 40);
+                btn_jour.Text = btn_jour.Name = i.ToString();                 
+                btn_jour.Location = new Point(60 + (posX * 40), 60 + (posY * 40));
                 posX++;
 
                 //modulo 50 pour savoir quand mon i arrive à 50
@@ -51,22 +52,22 @@ namespace PI_Mars_Mission_Control
                 if (i <= 50)
                 {
                     //ajout des 50 premiers éléments
-                    this.Controls.Add(jour.Btn_jour);
+                    this.Controls.Add(btn_jour);
                 }
                 //gestion de la couleur 
-                if (int.Parse(jour.Btn_jour.Name) < jourActuel)
+                if (int.Parse(btn_jour.Name) < jourActuel)
                 {
-                    jour.Btn_jour.BackColor = Color.LightGray;
+                    btn_jour.BackColor = Color.LightGray;
                 }
-                else if (int.Parse(jour.Btn_jour.Name) == jourActuel)
+                else if (int.Parse(btn_jour.Name) == jourActuel)
                 {
-                    jour.Btn_jour.BackColor = Color.LightBlue;
-                    jour.Btn_jour.Click += jour_Click;//fonction de click sur le Btn_jour 
+                    btn_jour.BackColor = Color.LightBlue;
+                    btn_jour.Click += jour_Click;//fonction de click sur le Btn_jour 
                 }
                 else
                 {
-                    jour.Btn_jour.BackColor = Color.LightGreen;
-                    jour.Btn_jour.Click += jour_Click;//fonction de click sur le Btn_jour
+                    btn_jour.BackColor = Color.LightGreen;
+                    btn_jour.Click += jour_Click;//fonction de click sur le Btn_jour
                 }
                 Journee.ListeJournees.Add(jour); //Ajout à la liste
             }
@@ -77,7 +78,7 @@ namespace PI_Mars_Mission_Control
             int i = 0;
             foreach (var jour in Journee.ListeJournees)
             {
-                if(jour.Btn_jour == ((Button)sender))
+                if(btn_jour == ((Button)sender))
                 {
                     i = Journee.ListeJournees.IndexOf(jour);
                 }
@@ -97,14 +98,14 @@ namespace PI_Mars_Mission_Control
                 //Je vire tous les Btn_jours qui sont dans mon control
                 foreach (var jour in Journee.ListeJournees)
                 {
-                    this.Controls.Remove(jour.Btn_jour);
+                    this.Controls.Remove(btn_jour);
                 }
                 //Je parcours ma liste et je n'ajoute dans le control que ceux que je veux, à savoir ceux qui se trouvent dans l'intervalle qui m'interesse.
                 foreach (var jour in Journee.ListeJournees)
                 {
-                    if ((Convert.ToInt64(jour.Btn_jour.Name) <= period * 50) && (Convert.ToInt64(jour.Btn_jour.Name) > (period - 1) * 50))//les 50 premiers, puis les 50 suivants..
+                    if ((Convert.ToInt64(btn_jour.Name) <= period * 50) && (Convert.ToInt64(btn_jour.Name) > (period - 1) * 50))//les 50 premiers, puis les 50 suivants..
                     {
-                        this.Controls.Add(jour.Btn_jour);
+                        this.Controls.Add(btn_jour);
                     }
                 }
             }
@@ -118,19 +119,17 @@ namespace PI_Mars_Mission_Control
                 //Je vire tous les jours qui sont dans mon control
                 foreach (var jour in Journee.ListeJournees)
                 {
-                    this.Controls.Remove(jour.Btn_jour);
+                    this.Controls.Remove(btn_jour);
                 }
                 //Idem, je parcours ma liste et je n'ajoute dans le control que ceux que je veux, à savoir ceux qui se trouvent dans l'intervalle qui m'interesse.
                 foreach (var jour in Journee.ListeJournees)
                 {
-                    if ((Convert.ToInt64(jour.Btn_jour.Name) <= period * 50) && (Convert.ToInt64(jour.Btn_jour.Name) > (period - 1) * 50))
+                    if ((Convert.ToInt64(btn_jour.Name) <= period * 50) && (Convert.ToInt64(btn_jour.Name) > (period - 1) * 50))
                     {
-                        this.Controls.Add(jour.Btn_jour);
+                        this.Controls.Add(btn_jour);
                     }
                 }
             }
         }
-
-
     }
 }

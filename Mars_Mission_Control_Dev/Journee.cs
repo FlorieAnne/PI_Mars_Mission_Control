@@ -8,24 +8,24 @@ namespace PI_Mars_Mission_Control
 {
     public class Journee
     {
-        private int num;
-        private Button btn_jour;
+        private int index_jour;
+    //    private Button btn_jour;
 
-                public int Num
+                public int Index_jour
         {
-            get { return num; }
-            set { num = value; }
+            get { return index_jour; }
+            set { index_jour = value; }
         }
 
-        public Button Btn_jour
-        {
-            get { return btn_jour; }
-            set { btn_jour = value; }
-        }
+     //   public Button Btn_jour
+     //   {
+     //       get { return btn_jour; }
+     //       set { btn_jour = value; }
+     //   }
 
-        public Journee(int num)
+        public Journee(int index_jour)
         {
-            this.num = num;
+            this.index_jour = index_jour;
         }
 
         private static List<Journee> listeJournees;
