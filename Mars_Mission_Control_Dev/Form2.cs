@@ -7,18 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace PJINFO1
+namespace PI_Mars_Mission_Control
 {
     public partial class Form2 : Form
     {
-        private Jour jourActuel;
+        private Journee jourActuel;
 
-        public Form2(Jour jour)
+        public Form2(Journee jour)
         {
             InitializeComponent();
             jourActuel = jour;
-            this.tagJourActuel.Text = jour.Bouton.Text;
-            this.tagJourActuel2.Text = jour.Bouton.Text;
+            this.tagJourActuel.Text = jour.Btn_jour.Text;
+            this.tagJourActuel2.Text = jour.Btn_jour.Text;
         }
 
         private void retourCalendrier_Click(object sender, EventArgs e)
@@ -33,23 +33,23 @@ namespace PJINFO1
 
         }
 
-        private void miseAJourJour(Jour jourApres)
+        private void miseAJourJour(Journee jourApres)
         {
-            this.tagJourActuel.Text = jourApres.Bouton.Text;
-            this.tagJourActuel2.Text = jourApres.Bouton.Text;
+            this.tagJourActuel.Text = jourApres.Btn_jour.Text;
+            this.tagJourActuel2.Text = jourApres.Btn_jour.Text;
             jourActuel = jourApres;
         }
 
         private void jourPrecedent_Click(object sender, EventArgs e)
         {
-            int pop = Global.ListeJours.IndexOf(jourActuel);
-            miseAJourJour(Global.ListeJours[pop -1]);
+            int index = Journee.ListeJournees.IndexOf(jourActuel);
+            miseAJourJour(Journee.ListeJournees[index -1]);
         }
 
         private void jourSuivant_Click(object sender, EventArgs e)
         {
-            int pop = Global.ListeJours.IndexOf(jourActuel);            
-            miseAJourJour(Global.ListeJours[pop +1]);
+            int index = Journee.ListeJournees.IndexOf(jourActuel);            
+            miseAJourJour(Journee.ListeJournees[index +1]);
         }
 
         private void inserer_Click(object sender, EventArgs e)
@@ -66,5 +66,7 @@ namespace PJINFO1
         {
 
         }
+
+        public Journee journee { get; set; }
     }
 }

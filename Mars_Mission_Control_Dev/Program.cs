@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace PJINFO1
+namespace PI_Mars_Mission_Control
 {
     static class Program
     {

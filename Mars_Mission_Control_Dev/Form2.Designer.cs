@@ -1,4 +1,4 @@
-﻿namespace PJINFO1
+﻿namespace PI_Mars_Mission_Control
 {
     partial class Form2
     {
