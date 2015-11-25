@@ -13,12 +13,12 @@ namespace PI_Mars_Mission_Control
     {
         private Journee jourActuel;
 
-        public Form2(Journee jour)
+        public Form2(int jour)
         {
             InitializeComponent();
-            jourActuel = jour;
-            this.tagJourActuel.Text = jour.Btn_jour.Text;
-            this.tagJourActuel2.Text = jour.Btn_jour.Text;
+            jourActuel = Journee.ListeJournees.ElementAt(jour);
+            this.tagJourActuel.Text = jour.ToString();
+			this.tagJourActuel2.Text = jour.ToString();
         }
 
         private void retourCalendrier_Click(object sender, EventArgs e)

@@ -8,6 +8,8 @@ namespace PI_Mars_Mission_Control
 {
     public class Journee
     {
+		public Button Btn_jour { get; set; }
+
 		// Accesseurs & Propriétés
 		private int _numJour;
 		public int NumJour
@@ -15,6 +17,29 @@ namespace PI_Mars_Mission_Control
             get { return _numJour; }
             set { _numJour = value; }
         }
+
+		public string CompteRendu
+		{
+			get
+			{
+				throw new System.NotImplementedException();
+			}
+			set
+			{
+			}
+		}
+
+		public List<Activite> ListActiviteJournee
+		{
+			get
+			{
+				throw new System.NotImplementedException();
+			}
+			set
+			{
+			}
+		}
+
 
 		// Variables statiques
 		private static List<Journee> _listeJournees;
@@ -41,35 +66,28 @@ namespace PI_Mars_Mission_Control
 			ListeJournees.Add(this);
         }
 				  
+		
 
-        public string CompteRendu
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-		}
-
-
-		public List<Activite> ListActiviteJournee
-		{
-			get
-			{
-				throw new System.NotImplementedException();
-			}
-			set
-			{
-			}
-		}
-
+		// Méthodes
         public void setCompteRendu()
         {
             throw new System.NotImplementedException();
         }
 
-        public Button Btn_jour { get; set; }
+
+		//public Journee getJournee(int numJour)
+		//{
+		//    foreach (var journee in ListeJournees)
+		//    {
+		//        if (journee.NumJour == numJour)
+		//        {
+		//            return journee;
+		//        }
+		//    }
+
+		//    return null;
+		//}
+
+        
     }
 }
