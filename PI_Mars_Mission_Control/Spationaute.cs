@@ -23,6 +23,17 @@ namespace PI_Mars_Mission_Control
 			}
 		}
 
+		public static List<Spationaute> ListSpationaute
+		{
+			get
+			{
+				throw new System.NotImplementedException();
+			}
+			set
+			{
+			}
+		}
+
 		public List<Activite> afficherActiviteSpationaute()
 		{
 			throw new System.NotImplementedException();

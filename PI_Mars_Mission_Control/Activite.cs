@@ -67,7 +67,7 @@ namespace PI_Mars_Mission_Control
             }
         }
 
-		public static System.Collections.Generic.List<Spationaute> ListSpationaute
+		public System.Collections.Generic.List<Spationaute> ListSpationaute
 		{
 			get
 			{
