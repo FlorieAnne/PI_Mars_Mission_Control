@@ -7,53 +7,17 @@ namespace PI_Mars_Mission_Control
 {
 	public class Dates
     {
-        public Dates()
+        public int heure;
+
+		public int minute;
+		
+        public int jour;
+
+        public Dates(int h, int m, int j)
         {
-            throw new System.NotImplementedException();
+            heure = h;
+            minute = m;
+            jour = j;
         }
-
-		public DateTime Heure
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-		public DateTime Minute
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-		public DateTime Seconde
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-		}
-
-		public DateTime Jour
-		{
-			get
-			{
-				throw new System.NotImplementedException();
-			}
-			set
-			{
-			}
-		}
     }
 }

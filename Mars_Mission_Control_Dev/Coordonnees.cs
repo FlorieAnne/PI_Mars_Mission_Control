@@ -6,44 +6,46 @@ using System.Drawing;
 
 namespace PI_Mars_Mission_Control
 {
-	public class Coordonnees
-	{
-		public Coordonnees()
-		{
-			throw new System.NotImplementedException();
-		}
+    public class Coordonnees
+    {
+        public Point Position
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
 
-		public Point Position
-		{
-			get
-			{
-				throw new System.NotImplementedException();
-			}
-			set
-			{
-			}
-		}
+        public Image Icone
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
 
-		public Image Icone
-		{
-			get
-			{
-				throw new System.NotImplementedException();
-			}
-			set
-			{
-			}
-		}
+        public string Descriptif
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
 
-		public string Descriptif
-		{
-			get
-			{
-				throw new System.NotImplementedException();
-			}
-			set
-			{
-			}
-		}
-	}
+        public Coordonnees(Point point, Image Icone, string descriptif)
+        {
+            this.Position = point;
+            this.Icone = Icone;
+            this.Descriptif = descriptif;
+        }
+    }
 }

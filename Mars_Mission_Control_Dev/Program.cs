@@ -16,7 +16,7 @@ namespace PI_Mars_Mission_Control
         [STAThread]
         static void Main()
         {
-			Console.Title = "Resto 2.0 - Gestion des réservations";
+            //Console.Title = "Resto 2.0 - Gestion des réservations";
 			//Console.SetWindowSize(100,45);
 			
 			// Chargement des données 
