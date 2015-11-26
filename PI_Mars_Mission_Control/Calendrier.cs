@@ -23,6 +23,17 @@ namespace PI_Mars_Mission_Control
 			}
 		}
 
+		public List<Spationaute> ListSpationaute
+		{
+			get
+			{
+				throw new System.NotImplementedException();
+			}
+			set
+			{
+			}
+		}
+
         public void selectionPeriode()
         {
             throw new System.NotImplementedException();

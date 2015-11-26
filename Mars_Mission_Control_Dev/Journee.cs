@@ -50,12 +50,6 @@ namespace PI_Mars_Mission_Control
 			set { _listeJournees = value; }
 		}    
 
-		private static int _cptJour;
-		public static int CptJour
-		{
-			get { return _cptJour; }
-			set { _cptJour = value; }
-		}
 
 #endregion
 

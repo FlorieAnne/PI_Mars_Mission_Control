@@ -12,7 +12,7 @@ namespace PI_Mars_Mission_Control
             throw new System.NotImplementedException();
         }
 
-		public DateTime Heure
+		public int Heure
         {
             get
             {
@@ -23,18 +23,7 @@ namespace PI_Mars_Mission_Control
             }
         }
 
-		public DateTime Minute
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-		public DateTime Seconde
+		public int Minute
         {
             get
             {
@@ -45,7 +34,7 @@ namespace PI_Mars_Mission_Control
             }
 		}
 
-		public DateTime Jour
+		public int Jour
 		{
 			get
 			{

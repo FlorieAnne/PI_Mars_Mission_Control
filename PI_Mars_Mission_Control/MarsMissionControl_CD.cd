@@ -3,7 +3,7 @@
   <Class Name="PI_Mars_Mission_Control.Dates">
     <Position X="2.75" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQAAAAAAAAAAAIAAAAAAAAAAACBAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAQAAAAAAAAAAAIAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
       <FileName>Dates.cs</FileName>
       <NewMemberFileName>Date.cs</NewMemberFileName>
     </TypeIdentifier>
@@ -11,14 +11,14 @@
   <Class Name="PI_Mars_Mission_Control.Calendrier">
     <Position X="0.5" Y="0.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAACAAAAAAAAAAAQAAAAAAAAAAAAAAAAAFAAAAAA=</HashCode>
+      <HashCode>AAAAAACAAAAAAAAAAAQAACAAAAAAAAAAAAAAFAAAAAA=</HashCode>
       <FileName>Calendrier.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="PI_Mars_Mission_Control.Activite">
     <Position X="5.5" Y="0.5" Width="3" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAQAAAAAgAAAAACAAAAAAIAAAAIAQABAAAgE=</HashCode>
+      <HashCode>AAAAAAAAAQBAAAAgAAAAACAAAAAAIAAAAIAQABAAAgE=</HashCode>
       <FileName>Activite.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -44,9 +44,9 @@
     </TypeIdentifier>
   </Class>
   <Class Name="PI_Mars_Mission_Control.Spationaute">
-    <Position X="5.5" Y="4" Width="1.5" />
+    <Position X="5.5" Y="4" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Spationaute.cs</FileName>
     </TypeIdentifier>
   </Class>
