@@ -49,25 +49,22 @@ namespace PI_Mars_Mission_Control
 			set { _listeJournees = value; }
 		}    
 
-		private static int _cptJour;
-		public static int CptJour
-		{
-			get { return _cptJour; }
-			set { _cptJour = value; }
-		}
+        //private static int _cptJour;
+        //public static int CptJour
+        //{
+        //    get { return _cptJour; }
+        //    set { _cptJour = value; }
+        //}
 		
 
 		// Constructeur 
-		public Journee()
-        {			
-			// A chaque création d'objet on incrémente le compteur statique
-			++CptJour;			
-			NumJour = CptJour;
+		public Journee(int index)
+        {					
+			NumJour = index;
 			ListeJournees.Add(this);
         }
 				  
 		
-
 		// Méthodes
         public void setCompteRendu()
         {

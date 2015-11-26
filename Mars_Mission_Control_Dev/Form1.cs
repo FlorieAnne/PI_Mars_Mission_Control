@@ -11,7 +11,7 @@ namespace PI_Mars_Mission_Control
 {
     public partial class Form1 : Form
 	{
-		#region Accesseurs & Propriétés
+#region Accesseurs & Propriétés
 
 		private int period = 1;
         private int jourActuel = 25;
@@ -28,11 +28,9 @@ namespace PI_Mars_Mission_Control
 			set { _listBtnJour = value; }
 		}
 		
-		#endregion
-	
-
-	
-		// Constructeur
+#endregion
+		
+#region Constructeur
 
         public Form1()
         {
@@ -40,16 +38,15 @@ namespace PI_Mars_Mission_Control
 			
 			// Si la l'objet liste des journées n'est pas créé 
 			// Test à remplacer et à faire en fonction de l'importation des détails des journées via le XML
-			if (Journee.ListeJournees == null)
-			{
+			//if (Journee.ListeJournees == null)
+			//{
 				Journee.ListeJournees = new List<Journee>();
 				
-				for (int i = 0; i < 501; i++)
+				for (int i = 0; i < 500; i++)
 				{
-					Journee jour = new Journee();
-					Journee.ListeJournees.Add(jour);
+					Journee jour = new Journee(i);
 				}
-			}
+			//}
 
 			if (this.ListBtnJour == null)
 			{
@@ -78,30 +75,23 @@ namespace PI_Mars_Mission_Control
 
              
 			    this.Controls.Add(btn_jour);
-			
+			    btn_jour.Click += jour_Click;//fonction de click sur le Btn_jour
 
                 //gestion de la couleur 
                 if (int.Parse(btn_jour.Name) < jourActuel)
-                {
                     btn_jour.BackColor = Color.LightGray;
-                }
                 else if (int.Parse(btn_jour.Name) == jourActuel)
-                {
                     btn_jour.BackColor = Color.LightBlue;
-                    btn_jour.Click += jour_Click;//fonction de click sur le Btn_jour 
-                }
                 else
-                {
-                    btn_jour.BackColor = Color.LightGreen;
-                    btn_jour.Click += jour_Click;//fonction de click sur le Btn_jour
-                }                
+                    btn_jour.BackColor = Color.LightGreen;                  
+                              
             }
 
         }
 
+#endregion
 
-
-		// Méthodes
+#region Méthodes
 
         private void jour_Click(object sender, EventArgs e)
         {
@@ -116,60 +106,51 @@ namespace PI_Mars_Mission_Control
 
         private void joursSuivants_Click(object sender, EventArgs e)
         {
-            //ton truc
+            Button tmpBtn;
             if (period < 10)
             {
                 period++;
-
-
-
+                
 				for (int i = 0; i < 50; i++)
-				{
-					if (this.Controls[i] is Button)
-					{
-						btn_jour.Text = this.Controls[i].Text;
-					}					
+				{   
+                    tmpBtn = ListBtnJour.ElementAt(i);
+                    int tmp = int.Parse((ListBtnJour.ElementAt(i).Text.ToString())); //On récupère la valeur du numéro du jour
+                    tmp += 50; // On lui ajoute 50
+                    tmpBtn.Text = tmp.ToString(); // Et on la remplace
+                    
+                    //color                    
+                    if (tmp < jourActuel)
+                        tmpBtn.BackColor = Color.LightGray;
+                    else if (tmp == jourActuel)
+                        tmpBtn.BackColor = Color.LightBlue;
+                    else
+                        tmpBtn.BackColor = Color.LightGreen;     
+
 				}
-
-                //Je vire tous les Btn_jours qui sont dans mon control
-                foreach (var jour in Journee.ListeJournees)
-                {
-					//if (jour.NumJour)
-					//{
-						
-					//}
-                    //this.Controls.Remove(btn_jour);
-
-
-                }
-                //Je parcours ma liste et je n'ajoute dans le control que ceux que je veux, à savoir ceux qui se trouvent dans l'intervalle qui m'interesse.
-                foreach (var jour in Journee.ListeJournees)
-                {
-					//if ((Convert.ToInt64(btn_jour.Name) <= period * 50) && (Convert.ToInt64(btn_jour.Name) > (period - 1) * 50))//les 50 premiers, puis les 50 suivants..
-					//{
-					//    this.Controls.Add(btn_jour);
-					//}
-                }
             }
         }
 
         private void joursPrecedents_Click(object sender, EventArgs e)
         {
+            Button tmpBtn;
             if (period > 1)
             {
                 period--;
-                //Je vire tous les jours qui sont dans mon control
-                foreach (var jour in Journee.ListeJournees)
+
+                for (int i = 0; i < 50; i++)
                 {
-                    this.Controls.Remove(btn_jour);
-                }
-                //Idem, je parcours ma liste et je n'ajoute dans le control que ceux que je veux, à savoir ceux qui se trouvent dans l'intervalle qui m'interesse.
-                foreach (var jour in Journee.ListeJournees)
-                {
-                    if ((Convert.ToInt64(btn_jour.Name) <= period * 50) && (Convert.ToInt64(btn_jour.Name) > (period - 1) * 50))
-                    {
-                        this.Controls.Add(btn_jour);
-                    }
+                    tmpBtn = ListBtnJour.ElementAt(i);
+                    int tmp = int.Parse((ListBtnJour.ElementAt(i).Text.ToString())); // On récupère la valeur du numéro du jour
+                    tmp -= 50; // On lui enlève 50
+                    tmpBtn.Text = tmp.ToString(); // Et on la replace
+
+                    //color                    
+                    if (tmp < jourActuel)
+                        tmpBtn.BackColor = Color.LightGray;
+                    else if (tmp == jourActuel)
+                        tmpBtn.BackColor = Color.LightBlue;
+                    else
+                        tmpBtn.BackColor = Color.LightGreen;     
                 }
             }
         }
@@ -177,6 +158,9 @@ namespace PI_Mars_Mission_Control
 		private void label1_Click(object sender, EventArgs e)
 		{
 
-		}
+        }
+
+#endregion
+
     }
 }
