@@ -162,5 +162,10 @@ namespace PI_Mars_Mission_Control
 
 #endregion
 
+		private void Form1_Load(object sender, EventArgs e)
+		{
+
+		}
+
     }
 }
