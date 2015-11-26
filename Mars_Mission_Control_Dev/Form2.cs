@@ -11,7 +11,7 @@ namespace PI_Mars_Mission_Control
 {
     public partial class Form2 : Form
     {
-        private Journee jourActuel;
+        private Journee jourActuel;       
 
         public Form2(int jour)
         {
@@ -34,22 +34,21 @@ namespace PI_Mars_Mission_Control
         }
 
         private void miseAJourJour(Journee jourApres)
-        {
-            this.tagJourActuel.Text = jourApres.Btn_jour.Text;
-            this.tagJourActuel2.Text = jourApres.Btn_jour.Text;
+        {           
+            this.tagJourActuel.Text = this.tagJourActuel2.Text = jourApres.NumJour.ToString();            
             jourActuel = jourApres;
         }
 
         private void jourPrecedent_Click(object sender, EventArgs e)
         {
-            int index = Journee.ListeJournees.IndexOf(jourActuel);
-            miseAJourJour(Journee.ListeJournees[index -1]);
+            if(jourActuel.NumJour != 0)
+                miseAJourJour(Journee.ListeJournees.ElementAt((jourActuel.NumJour - 1)));
         }
 
         private void jourSuivant_Click(object sender, EventArgs e)
         {
-            int index = Journee.ListeJournees.IndexOf(jourActuel);            
-            miseAJourJour(Journee.ListeJournees[index +1]);
+            if (jourActuel.NumJour != 499)
+                miseAJourJour(Journee.ListeJournees.ElementAt((jourActuel.NumJour + 1)));
         }
 
         private void inserer_Click(object sender, EventArgs e)
