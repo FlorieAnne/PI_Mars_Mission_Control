@@ -111,23 +111,23 @@ namespace PI_Mars_Mission_Control
                 listTailles.Add(tailleActivite(i));
             }
 
-            listEcart.Add(((listActi[0].HeureFin.heure * 60 + listActi[0].HeureFin.minute) - 0) / 10 * _taille10minPixel); // écart entre heure 0 et première activité
+            listEcart.Add(((listActi[0].HeureDebut.heure * 60 + listActi[0].HeureDebut.minute) - 0) / 10 * _taille10minPixel); // écart entre heure 0 et première activité
 
             for (int j = 0; j < listActi.Count() - 1; j++)
             {
-                listEcart.Add(((listActi[j + 1].HeureFin.heure * 60 + listActi[j + 1].HeureFin.minute) - (listActi[j].HeureFin.heure * 60 + listActi[j].HeureFin.minute)) / 10 * _taille10minPixel); // écart entre 2 activités
+                listEcart.Add(((listActi[j + 1].HeureDebut.heure * 60 + listActi[j + 1].HeureDebut.minute) - (listActi[j].HeureFin.heure * 60 + listActi[j].HeureFin.minute)) / 10 * _taille10minPixel); // écart entre 2 activités
             }
 
             listEcart.Add(((24 * 60 + 40 - (listActi[listActi.Count - 1].HeureFin.heure * 60 + listActi[listActi.Count - 1].HeureFin.minute))) / 10 * _taille10minPixel); // écart entre dernière activité et 24h40
         }
 
-        private int calculNbLigne()
+        private int calculNbBoutons()
         {
-           // IEnumerable<int> listEcartNonNul = listEcart.Where(p => p == 0); // enlève les valeurs nulles de la liste
-           List<int> listEcartNonNul = new List<int>();
-            
-            for (int i = 0; i < listEcart.Count-1; i++)
-            {                
+            // IEnumerable<int> listEcartNonNul = listEcart.Where(p => p == 0); // enlève les valeurs nulles de la liste
+            List<int> listEcartNonNul = new List<int>();
+
+            for (int i = 0; i < listEcart.Count - 1; i++)
+            {
                 if (listEcart[i] != 0)
                 {
                     listEcartNonNul.Add(listEcart[i]);
@@ -139,31 +139,26 @@ namespace PI_Mars_Mission_Control
 
         private void ajusteNbLigne()
         {
-            tableLayoutPanel1.CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
             tailleChaqueCreneaux();
-      //      tableLayoutPanel1.RowCount = calculNbLigne();
-        /*    int a = calculNbLigne();
-
-            for (int i = 0; i < a; i++)
-            {
-                tableLayoutPanel1.RowCount++;
-            }*/
-            tableLayoutPanel1.RowCount = 8;
+            int posX = 20, posY = 90;
 
             List<Button> ListBtnActi = new List<Button>();
-
-            for (int i = 1; i < tableLayoutPanel1.RowCount; i++)
+            Label horaires;
+            
+            for (int i = 1; i < calculNbBoutons(); i++)
             {
-                tableLayoutPanel1.Controls[i].Size = new System.Drawing.Size(100, listTailles[i]);
                 Button BtnActi = new Button();
+                BtnActi.Size = new Size(200, listTailles[i - 1]);
+                BtnActi.Text = (listActi[i - 1].TexteDescritpif);
+                BtnActi.Location = (new Point(posX, posY));
+                horaires = new Label();
+                horaires.Location = new Point(posX + BtnActi.Width+10, posY);
+                horaires.Text = listActi[i - 1].HeureDebut.ToString();
                 ListBtnActi.Add(BtnActi);
-                BtnActi.Size = new Size(200, listTailles[i]);
-                BtnActi.Text = (listActi[i].TexteDescritpif);
-                tableLayoutPanel1.Controls.Add(BtnActi, 0, i);
+                this.Controls.Add(BtnActi);
+                this.Controls.Add(horaires);
+                posY += BtnActi.Height;
             }
         }
-
-        // RowCount = nombre de ligne de la table
-
     }
 }

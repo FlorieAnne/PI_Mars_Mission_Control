@@ -41,7 +41,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.tagJourActuel2 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.SuspendLayout();
             // 
             // button1
@@ -166,31 +165,11 @@
             this.textBox2.Size = new System.Drawing.Size(469, 20);
             this.textBox2.TabIndex = 43;
             // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 76);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 8;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(210, 359);
-            this.tableLayoutPanel1.TabIndex = 44;
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 666);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.ClientSize = new System.Drawing.Size(984, 812);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.tagJourActuel2);
             this.Controls.Add(this.label3);
@@ -226,7 +205,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label tagJourActuel2;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 
         public System.EventHandler comboBox1_SelectedIndexChanged { get; set; }
 

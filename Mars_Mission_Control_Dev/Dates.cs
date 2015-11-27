@@ -19,5 +19,10 @@ namespace PI_Mars_Mission_Control
             minute = m;
             jour = j;
         }
+
+        public override string ToString()
+        {
+             return String.Format("{0}:{1}",this.heure, this.minute);
+        }
     }
 }
