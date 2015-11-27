@@ -40,6 +40,8 @@ namespace PI_Mars_Mission_Control
 			// Test à remplacer et à faire en fonction de l'importation des détails des journées via le XML
 			//if (Journee.ListeJournees == null)
 			//{
+            Calendrier cal = new Calendrier();
+
 				Journee.ListeJournees = new List<Journee>();
 				
 				for (int i = 0; i < 500; i++)

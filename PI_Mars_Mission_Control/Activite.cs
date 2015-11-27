@@ -56,17 +56,6 @@ namespace PI_Mars_Mission_Control
             }
         }
 
-		public static List<Activite> ListActivite
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
 		public System.Collections.Generic.List<Spationaute> ListSpationaute
 		{
 			get

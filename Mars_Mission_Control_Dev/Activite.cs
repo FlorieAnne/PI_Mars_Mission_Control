@@ -6,6 +6,7 @@ using System.Text;
 using System.IO;
 using System.Xml.Serialization;
 
+
 namespace PI_Mars_Mission_Control
 {
 	[XmlRoot("activite")]
@@ -46,15 +47,6 @@ namespace PI_Mars_Mission_Control
 			set { _texteDescriptif = value; }
 		}
 		
-		// A supprimer
-		//private static List<Activite> _listActivite;
-		//[XmlArray("Activites")]
-		//public static List<Activite> ListActivite
-		//{
-		//    get { return _listActivite = new List<Activite>(); }
-		//    set { _listActivite = value; }
-		//}
-
 		private List<Spationaute> _listSpationaute;
 		[XmlArray("Spationautes")]
 		public List<Spationaute> ListSpationaute

@@ -34,6 +34,17 @@ namespace PI_Mars_Mission_Control
 			}
 		}
 
+        public List<Activite> ListActivite
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
+
         public void selectionPeriode()
         {
             throw new System.NotImplementedException();

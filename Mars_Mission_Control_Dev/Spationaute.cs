@@ -3,25 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using System.Xml.Serialization;
+
+
 namespace PI_Mars_Mission_Control
 {
+    [XmlRoot("Spationaute")]
 	public class Spationaute
 	{
-		public Spationaute()
-		{
-			throw new System.NotImplementedException();
-		}
 
-		public string Nom
-		{
-			get
-			{
-				throw new System.NotImplementedException();
-			}
-			set
-			{
-			}
-		}
+        private string _nom;
+        [XmlElement("Nom")]
+        public string Nom
+        {
+            get { return _nom; }
+            set { _nom = value; }
+        }
+        
+
+        public Spationaute()
+        {
+            throw new System.NotImplementedException();
+        }
+
 
 		public List<Activite> afficherActiviteSpationaute()
 		{
