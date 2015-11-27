@@ -34,13 +34,15 @@
             this.tagJourActuel = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.tagJourActuel2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.panelActivites = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // button1
@@ -103,13 +105,6 @@
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
             this.comboBox1.TabIndex = 9;
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(311, 110);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(469, 20);
-            this.textBox1.TabIndex = 37;
-            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(827, 110);
@@ -143,7 +138,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(323, 305);
+            this.label3.Location = new System.Drawing.Point(329, 305);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(122, 13);
             this.label3.TabIndex = 41;
@@ -158,25 +153,54 @@
             this.tagJourActuel2.TabIndex = 42;
             this.tagJourActuel2.Text = "J";
             // 
-            // textBox2
+            // label2
             // 
-            this.textBox2.Location = new System.Drawing.Point(311, 361);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(469, 20);
-            this.textBox2.TabIndex = 43;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(326, 139);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(106, 13);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "Détails de la Journée";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(329, 155);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(225, 96);
+            this.richTextBox1.TabIndex = 44;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Location = new System.Drawing.Point(329, 321);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(392, 123);
+            this.richTextBox2.TabIndex = 45;
+            this.richTextBox2.Text = "";
+            this.richTextBox2.TextChanged += new System.EventHandler(this.richTextBox2_TextChanged);
+            // 
+            // panelActivites
+            // 
+            this.panelActivites.Location = new System.Drawing.Point(12, 58);
+            this.panelActivites.Name = "panelActivites";
+            this.panelActivites.Size = new System.Drawing.Size(311, 844);
+            this.panelActivites.TabIndex = 46;
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 812);
-            this.Controls.Add(this.textBox2);
+            this.ClientSize = new System.Drawing.Size(984, 917);
+            this.Controls.Add(this.panelActivites);
+            this.Controls.Add(this.richTextBox2);
+            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.tagJourActuel2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.tagJourActuel);
@@ -198,13 +222,15 @@
         private System.Windows.Forms.Label tagJourActuel;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label tagJourActuel2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.Panel panelActivites;
 
         public System.EventHandler comboBox1_SelectedIndexChanged { get; set; }
 

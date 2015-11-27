@@ -47,6 +47,8 @@ namespace PI_Mars_Mission_Control
 				for (int i = 0; i < 500; i++)
 				{
 					Journee jour = new Journee(i);
+                    jour.CompteRendu = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque dolore magnam aliquam quaerat voluptatem. Ut enim quo voluptas nulla pariatur?";
+                    jour.ListActiviteJournee = new List<Activite>();
 				}
 			//}
 
@@ -88,6 +90,49 @@ namespace PI_Mars_Mission_Control
                     btn_jour.BackColor = Color.LightGreen;                  
                               
             }
+
+            #region Activités par défauts
+
+            // On ajoute toutes les activités par défaut
+            int index = 0;
+            foreach (var item in Journee.ListeJournees)
+            {
+                Activite Sleeping1 = new Activite(new Dates(0, 0, item.NumJour), new Dates(7,0, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Sleeping");
+                Activite Sleeping2 = new Activite(new Dates(23, 0, item.NumJour), new Dates(24, 40, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Sleeping");
+                Activite Eating1 = new Activite(new Dates(7, 0, item.NumJour), new Dates(8, 0, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Eating");
+                Activite Eating2 = new Activite(new Dates(12, 0, item.NumJour), new Dates(14, 0, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Eating");
+                Activite Eating3 = new Activite(new Dates(19, 0, item.NumJour), new Dates(21, 0, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/"COUCOU"), "Eating");
+                Activite Private1 = new Activite(new Dates(8, 0, item.NumJour), new Dates(12, 0, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Eating");
+                Activite Private2 = new Activite(new Dates(14, 0, item.NumJour), new Dates(19, 0, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Private");
+                Activite Private3 = new Activite(new Dates(21, 0, item.NumJour), new Dates(23, 0, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Private");
+
+                item.ListActiviteJournee.Add(Sleeping1);
+
+                if (index % 1 == 0)
+                    item.ListActiviteJournee.Add(Sleeping2);
+                if (index % 2 == 0)
+                    item.ListActiviteJournee.Add(Eating1);
+                if (index % 6 == 0)
+                    item.ListActiviteJournee.Add(Eating2);
+                if (index % 3 == 0)
+                    item.ListActiviteJournee.Add(Eating3);
+                if (index % 8 == 0)
+                    item.ListActiviteJournee.Add(Private1);
+                if (index % 6 == 0)
+                    item.ListActiviteJournee.Add(Private2);
+                if (index % 4 == 0)
+                    item.ListActiviteJournee.Add(Private3);
+                item.ListActiviteJournee.Sort(
+                    delegate(Activite a1, Activite a2) // Et on les ordonne
+                    {
+                        int HA1 = a1.HeureDebut.heure * 60 + a1.HeureDebut.minute;
+                        int HA2 = a2.HeureDebut.heure * 60 + a2.HeureDebut.minute;
+                        return HA1.CompareTo(HA2);
+                    });
+
+                index++;
+            }
+            #endregion
 
         }
 
