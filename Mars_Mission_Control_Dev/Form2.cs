@@ -23,7 +23,7 @@ namespace PI_Mars_Mission_Control
             jourActuel = Journee.ListeJournees.ElementAt(jour);
             this.tagJourActuel.Text = jour.ToString();
             this.tagJourActuel2.Text = jour.ToString();
-            _taille10minPixel = 2; // 10 minutes = 10 pixel
+            _taille10minPixel = 5; // 10 minutes = 5 pixel
 
             #region Activités par défauts
 
@@ -141,13 +141,14 @@ namespace PI_Mars_Mission_Control
         {
             tableLayoutPanel1.CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
             tailleChaqueCreneaux();
-            tableLayoutPanel1.RowCount = calculNbLigne();
-            int a = calculNbLigne();
+      //      tableLayoutPanel1.RowCount = calculNbLigne();
+        /*    int a = calculNbLigne();
 
             for (int i = 0; i < a; i++)
             {
                 tableLayoutPanel1.RowCount++;
-            }
+            }*/
+            tableLayoutPanel1.RowCount = 8;
 
             List<Button> ListBtnActi = new List<Button>();
 
