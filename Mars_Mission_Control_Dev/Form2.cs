@@ -24,15 +24,18 @@ namespace PI_Mars_Mission_Control
             this.tagJourActuel.Text = jour.ToString();
             this.tagJourActuel2.Text = jour.ToString();
             _taille10minPixel = 2; // 10 minutes = 10 pixel
+
+            #region Activités par défauts
+
             // On ajoute toutes les activités par défaut
-            Activite Sleeping1 = new Activite(new Dates(0, 0, jourActuel.NumJour), new Dates(7, 0, jourActuel.NumJour), new Coordonnees(new Point(), pictureBox1.Image, "COUCOU"), "texte");
-            Activite Sleeping2 = new Activite(new Dates(23, 0, jourActuel.NumJour), new Dates(24, 40, jourActuel.NumJour), new Coordonnees(new Point(), pictureBox1.Image, "COUCOU"), "texte");
-            Activite Eating1 = new Activite(new Dates(7, 0, jourActuel.NumJour), new Dates(8, 0, jourActuel.NumJour), new Coordonnees(new Point(), pictureBox1.Image, "COUCOU"), "texte");
-            Activite Eating2 = new Activite(new Dates(12, 0, jourActuel.NumJour), new Dates(14, 0, jourActuel.NumJour), new Coordonnees(new Point(), pictureBox1.Image, "COUCOU"), "texte");
-            Activite Eating3 = new Activite(new Dates(19, 0, jourActuel.NumJour), new Dates(21, 0, jourActuel.NumJour), new Coordonnees(new Point(), pictureBox1.Image, "COUCOU"), "texte");
-            Activite Private1 = new Activite(new Dates(8, 0, jourActuel.NumJour), new Dates(12, 0, jourActuel.NumJour), new Coordonnees(new Point(), pictureBox1.Image, "COUCOU"), "texte");
-            Activite Private2 = new Activite(new Dates(14, 0, jourActuel.NumJour), new Dates(19, 0, jourActuel.NumJour), new Coordonnees(new Point(), pictureBox1.Image, "COUCOU"), "texte");
-            Activite Private3 = new Activite(new Dates(21, 0, jourActuel.NumJour), new Dates(23, 0, jourActuel.NumJour), new Coordonnees(new Point(), pictureBox1.Image, "COUCOU"), "texte");
+            Activite Sleeping1 = new Activite(new Dates(0, 0, jourActuel.NumJour), new Dates(7, 0, jourActuel.NumJour), new Coordonnees(new Point(),/* pictureBox1.Image,*/ "COUCOU"), "Sleeping");
+            Activite Sleeping2 = new Activite(new Dates(23, 0, jourActuel.NumJour), new Dates(24, 40, jourActuel.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Sleeping");
+            Activite Eating1 = new Activite(new Dates(7, 0, jourActuel.NumJour), new Dates(8, 0, jourActuel.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Eating");
+            Activite Eating2 = new Activite(new Dates(12, 0, jourActuel.NumJour), new Dates(14, 0, jourActuel.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Eating");
+            Activite Eating3 = new Activite(new Dates(19, 0, jourActuel.NumJour), new Dates(21, 0, jourActuel.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/"COUCOU"), "Eating");
+            Activite Private1 = new Activite(new Dates(8, 0, jourActuel.NumJour), new Dates(12, 0, jourActuel.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Eating");
+            Activite Private2 = new Activite(new Dates(14, 0, jourActuel.NumJour), new Dates(19, 0, jourActuel.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Private");
+            Activite Private3 = new Activite(new Dates(21, 0, jourActuel.NumJour), new Dates(23, 0, jourActuel.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Private");
             listActi.Add(Sleeping1);
             listActi.Add(Sleeping2);
             listActi.Add(Eating1);
@@ -48,6 +51,9 @@ namespace PI_Mars_Mission_Control
                     int HA2 = a2.HeureDebut.heure * 60 + a2.HeureDebut.minute;
                     return HA1.CompareTo(HA2);
                 });
+
+            #endregion
+
             ajusteNbLigne();
         }
 
@@ -93,11 +99,6 @@ namespace PI_Mars_Mission_Control
 
         public Journee journee { get; set; }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private int tailleActivite(Activite Activitee)
         {
             return ((Activitee.HeureFin.heure - Activitee.HeureDebut.heure) * 60 + (Activitee.HeureFin.minute - Activitee.HeureDebut.minute)) / 10 * _taille10minPixel;
@@ -122,20 +123,42 @@ namespace PI_Mars_Mission_Control
 
         private int calculNbLigne()
         {
-            IEnumerable<int> listEcartNonNul = listEcart.Where(p => p == 0); // enlève les valeurs nulles de la liste
+           // IEnumerable<int> listEcartNonNul = listEcart.Where(p => p == 0); // enlève les valeurs nulles de la liste
+           List<int> listEcartNonNul = new List<int>();
+            
+            for (int i = 0; i < listEcart.Count-1; i++)
+            {                
+                if (listEcart[i] != 0)
+                {
+                    listEcartNonNul.Add(listEcart[i]);
+                }
+            }
             int nbEcartNonNul = listEcartNonNul.Count();
             return listTailles.Count + nbEcartNonNul;
         }
 
         private void ajusteNbLigne()
         {
+            tableLayoutPanel1.CellBorderStyle = TableLayoutPanelCellBorderStyle.Outset;
             tailleChaqueCreneaux();
             tableLayoutPanel1.RowCount = calculNbLigne();
+            int a = calculNbLigne();
 
-            for (int i = 0; i < tableLayoutPanel1.RowCount; i++)
+            for (int i = 0; i < a; i++)
+            {
+                tableLayoutPanel1.RowCount++;
+            }
+
+            List<Button> ListBtnActi = new List<Button>();
+
+            for (int i = 1; i < tableLayoutPanel1.RowCount; i++)
             {
                 tableLayoutPanel1.Controls[i].Size = new System.Drawing.Size(100, listTailles[i]);
-                tableLayoutPanel1.Controls.Add(new Button(), 0, i);
+                Button BtnActi = new Button();
+                ListBtnActi.Add(BtnActi);
+                BtnActi.Size = new Size(200, listTailles[i]);
+                BtnActi.Text = (listActi[i].TexteDescritpif);
+                tableLayoutPanel1.Controls.Add(BtnActi, 0, i);
             }
         }
 
