@@ -40,24 +40,14 @@ namespace PI_Mars_Mission_Control
 			set { _listActiviteJournee = value; }
 		}
 		
-		
-		// Variables statiques
-		private static List<Journee> _listeJournees;
-		[XmlArray("ListeJournees")]
-		public static List<Journee> ListeJournees
-		{
-			get { return _listeJournees; }
-			set { _listeJournees = value; }
-		}    
-
 
 #endregion
 
 		// Constructeur 
-		public Journee(int index)
+		public Journee(int index, List<Journee> listeJournee)
         {					
 			NumJour = index;
-			ListeJournees.Add(this);
+            listeJournee.Add(this);
         }
 				  
 		

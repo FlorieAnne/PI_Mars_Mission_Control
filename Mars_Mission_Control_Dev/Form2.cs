@@ -16,11 +16,17 @@ namespace PI_Mars_Mission_Control
         private List<Activite> listActi = new List<Activite>(); // liste des activités
         List<int> listTailles = new List<int>(); // taille en pixel d'une activité
         List<int> listEcart = new List<int>(); // ecart entre 2 activités
+        
+        //SAM Récupération du Form1 pour accéder à ses Propriétés
+        Form1 f1 = new Form1();
+        
 
         public Form2(int jour)
         {
             InitializeComponent();
-            jourActuel = Journee.ListeJournees.ElementAt(jour);
+
+            jourActuel = f1.Cal.ListJournees.ElementAt(jour);
+
             this.tagJourActuel.Text = jour.ToString();
             this.tagJourActuel2.Text = jour.ToString();            
             _taille10minPixel = 5; // 10 minutes = 5 pixel
@@ -31,14 +37,14 @@ namespace PI_Mars_Mission_Control
 
         private void retourCalendrier_Click(object sender, EventArgs e)
         {
-            Form1 f1 = new Form1();
             f1.Show();
             this.Close();
         }
 
         private void rafraichirPage(int jour)
-        {   
-            jourActuel =  Journee.ListeJournees.ElementAt((jour));        
+        {               
+            jourActuel = f1.Cal.ListJournees.ElementAt(jour);       
+
             miseAJourJour(jourActuel.NumJour);
             richTextBox2.Text = jourActuel.CompteRendu;
             afficheBoutons();

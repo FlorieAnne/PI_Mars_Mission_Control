@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+
 namespace PI_Mars_Mission_Control
 {
     public partial class Form1 : Form
 	{
+
+
 #region Accesseurs & Propriétés
+
 
 		private int period = 1;
         private int jourActuel = 25;
@@ -27,30 +31,35 @@ namespace PI_Mars_Mission_Control
 			get { return _listBtnJour; }
 			set { _listBtnJour = value; }
 		}
+
+        private Calendrier _cal;
+        public Calendrier Cal
+        {
+            get { return _cal; }
+            set { _cal = value; }
+        }        
+
 		
 #endregion
 		
+
 #region Constructeur
+
 
         public Form1()
         {
             InitializeComponent();
-			
-			// Si la l'objet liste des journées n'est pas créé 
-			// Test à remplacer et à faire en fonction de l'importation des détails des journées via le XML
-			//if (Journee.ListeJournees == null)
-			//{
-            Calendrier cal = new Calendrier();
 
-				Journee.ListeJournees = new List<Journee>();
+			// SAM Création d'un calendrier pour gérer la liste des journées (plus en statique dans la classe Journee)			
+            Cal = new Calendrier();            
 				
-				for (int i = 0; i < 500; i++)
-				{
-					Journee jour = new Journee(i);
-                    jour.CompteRendu = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque dolore magnam aliquam quaerat voluptatem. Ut enim quo voluptas nulla pariatur?";
-                    jour.ListActiviteJournee = new List<Activite>();
-				}
-			//}
+			for (int i = 0; i < 500; i++)
+			{
+				Journee jour = new Journee(i,Cal.ListJournees);
+                jour.CompteRendu = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque dolore magnam aliquam quaerat voluptatem. Ut enim quo voluptas nulla pariatur?";
+                jour.ListActiviteJournee = new List<Activite>();
+			}
+			
 
 			if (this.ListBtnJour == null)
 			{
@@ -91,11 +100,12 @@ namespace PI_Mars_Mission_Control
                               
             }
 
-            #region Activités par défauts
+
+    #region Activités par défauts
 
             // On ajoute toutes les activités par défaut
             int index = 0;
-            foreach (var item in Journee.ListeJournees)
+            foreach (var item in Cal.ListJournees)
             {
                 Activite Sleeping1 = new Activite(new Dates(0, 0, item.NumJour), new Dates(7,0, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Sleeping");
                 Activite Sleeping2 = new Activite(new Dates(23, 0, item.NumJour), new Dates(24, 40, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Sleeping");
@@ -132,13 +142,17 @@ namespace PI_Mars_Mission_Control
 
                 index++;
             }
-            #endregion
+
+    #endregion
 
         }
 
 #endregion
 
+
+
 #region Méthodes
+
 
         private void jour_Click(object sender, EventArgs e)
         {
@@ -177,6 +191,7 @@ namespace PI_Mars_Mission_Control
             }
         }
 
+
         private void joursPrecedents_Click(object sender, EventArgs e)
         {
             Button tmpBtn;
@@ -201,6 +216,7 @@ namespace PI_Mars_Mission_Control
                 }
             }
         }
+
 
 		private void label1_Click(object sender, EventArgs e)
 		{

@@ -26,12 +26,12 @@ namespace PI_Mars_Mission_Control
         }
 
 
-        private List<Journee> _listeJournees;
+        private List<Journee> _listJournees;
         [XmlArray("ListeJournees")]
-        public List<Journee> ListeJournees
+        public List<Journee> ListJournees
         {
-            get { return _listeJournees; }
-            set { _listeJournees = value; }
+            get { return _listJournees; }
+            set { _listJournees = value; }
         }    
 
 
@@ -57,9 +57,9 @@ namespace PI_Mars_Mission_Control
 
         public Calendrier()
         {
-            //this.ListeJournees = new List<Journee>();
-            //this.ListActivite = new List<Activite>();
-            //this.ListSpationaute = new List<Spationaute>();
+            this.ListJournees = new List<Journee>();
+            this.ListActivite = new List<Activite>();
+            this.ListSpationaute = new List<Spationaute>();
         }
 
 
