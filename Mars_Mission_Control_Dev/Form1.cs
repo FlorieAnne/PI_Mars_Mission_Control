@@ -45,12 +45,11 @@ namespace PI_Mars_Mission_Control
 
 #region Constructeur
 
-
         public Form1()
         {
             InitializeComponent();
 
-			// SAM Création d'un calendrier pour gérer la liste des journées (plus en statique dans la classe Journee)			
+			//Création d'un calendrier pour gérer la liste des journées (plus en statique dans la classe Journee)			
             Cal = new Calendrier();            
 				
 			for (int i = 0; i < 500; i++)
@@ -156,12 +155,11 @@ namespace PI_Mars_Mission_Control
 
         private void jour_Click(object sender, EventArgs e)
         {
-            int NumJour = 0;			
-			NumJour = int.Parse(((Button)sender).Text.ToString());
-			
-			Form2 f2 = new Form2(NumJour);
-            f2.Show();
-            this.Hide();          
+            int NumJour = 0;
+            NumJour = int.Parse(((Button)sender).Text.ToString());
+            Form2 f2 = new Form2(this.Cal ,this.Cal.ListJournees.ElementAt(NumJour));
+            this.Hide();
+            f2.Show();            
         }
 
 
