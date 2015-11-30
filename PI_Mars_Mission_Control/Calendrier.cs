@@ -45,6 +45,17 @@ namespace PI_Mars_Mission_Control
             }
         }
 
+		public List<Journee> ListJournees
+		{
+			get
+			{
+				throw new System.NotImplementedException();
+			}
+			set
+			{
+			}
+		}
+
         public void selectionPeriode()
         {
             throw new System.NotImplementedException();

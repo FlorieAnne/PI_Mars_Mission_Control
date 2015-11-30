@@ -67,20 +67,43 @@ namespace PI_Mars_Mission_Control
 #region méthodes
 
 
-        public void selectionPeriode()
+        public List<Journee> selectionPeriode(int jourDeb, int jourFin)
+        /* jourDeb, jourFin : numéro des JOURS, et pas les INDICES, correspondant aux extremités de la période
+         * renvoie une liste contenant tous les jours de la période demandée.*/
         {
-            throw new System.NotImplementedException();
+            if (jourFin < jourDeb) throw new System.RankException("le jour de debut doit être plus petit que le jour de fin");
+            List<Journee> list_periode=new List<Journee>();
+            for (int i = jourDeb - 1; i <= jourFin - 1; i++)
+            {
+                list_periode.Add(ListJournees[i]);
+            }
+            return list_periode;
         }
 
-		public System.Collections.Generic.List<PI_Mars_Mission_Control.Journee> extraireJourSortie()
+		public List<Journee> extraireJourSortie()
 		{
 			throw new System.NotImplementedException();
 		}
 
-		public void conversionHeureMartienne()
+		public Dates conversionHeureMartienne(DateTime HeureTerre)
 		{
-			throw new System.NotImplementedException();
+            TimeSpan DureeMissionT = HeureTerre - JourDebutMission;
+            int DureeMissionMin = (DureeMissionT.Days * 24 + DureeMissionT.Hours) * 60 + DureeMissionT.Minutes;
+            int minuteM=DureeMissionMin%(60*24);
+            int heureM=DureeMissionMin%60;
+            int joursM=DureeMissionMin/(24*60);
+            Dates DateM = new Dates(joursM, heureM, minuteM);
+            return DateM;
         }
+
+		//public List<Journee> rechercheLieuExploration(Coordonnees lieu, int jourDeb, int jourFin)
+		//{
+		//    List<Journee> list_periode = selectionPeriode(jourDeb, jourFin);
+		//    foreach(Journee uneJournee in list_periode)
+		//    {
+				
+		//    }			
+		//}
 
 
 #endregion

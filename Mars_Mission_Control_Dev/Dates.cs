@@ -13,7 +13,7 @@ namespace PI_Mars_Mission_Control
 		
         public int jour;
 
-        public Dates(int h, int m, int j)
+        public Dates(int j, int h, int m)
         {
             heure = h;
             minute = m;

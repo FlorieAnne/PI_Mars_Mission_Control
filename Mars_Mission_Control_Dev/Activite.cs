@@ -62,7 +62,7 @@ namespace PI_Mars_Mission_Control
 #region constructeur
 
 		// A MODIFIER 
-		public Activite(Dates hdeb,Dates hfin, Coordonnees lieu, string texte)
+		public Activite(Dates hdeb,Dates hfin, Coordonnees lieu, string texte, List<Spationaute> listSpatio)
 		{
 			if (hdeb == null)
 			{
@@ -106,16 +106,6 @@ namespace PI_Mars_Mission_Control
 
 
 		public void enregister()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void rechercheJourActivite(string mot)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void rechercheJourActivite(int numJour)
         {
             throw new System.NotImplementedException();
         }

@@ -107,14 +107,14 @@ namespace PI_Mars_Mission_Control
             int index = 0;
             foreach (var item in Cal.ListJournees)
             {
-                Activite Sleeping1 = new Activite(new Dates(0, 0, item.NumJour), new Dates(7,0, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Sleeping");
-                Activite Sleeping2 = new Activite(new Dates(23, 0, item.NumJour), new Dates(24, 40, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Sleeping");
-                Activite Eating1 = new Activite(new Dates(7, 0, item.NumJour), new Dates(8, 0, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Eating");
-                Activite Eating2 = new Activite(new Dates(12, 0, item.NumJour), new Dates(14, 0, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Eating");
-                Activite Eating3 = new Activite(new Dates(19, 0, item.NumJour), new Dates(21, 0, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/"COUCOU"), "Eating");
-                Activite Private1 = new Activite(new Dates(8, 0, item.NumJour), new Dates(12, 0, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Eating");
-                Activite Private2 = new Activite(new Dates(14, 0, item.NumJour), new Dates(19, 0, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Private");
-                Activite Private3 = new Activite(new Dates(21, 0, item.NumJour), new Dates(23, 0, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Private");
+                Activite Sleeping1 = new Activite(new Dates(0, 0, item.NumJour), new Dates(7,0, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Sleeping", Cal.ListSpationaute);
+                Activite Sleeping2 = new Activite(new Dates(23, 0, item.NumJour), new Dates(24, 40, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Sleeping", Cal.ListSpationaute);
+				Activite Eating1 = new Activite(new Dates(7, 0, item.NumJour), new Dates(8, 0, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Eating", Cal.ListSpationaute);
+				Activite Eating2 = new Activite(new Dates(12, 0, item.NumJour), new Dates(14, 0, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Eating", Cal.ListSpationaute);
+				Activite Eating3 = new Activite(new Dates(19, 0, item.NumJour), new Dates(21, 0, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/"COUCOU"), "Eating", Cal.ListSpationaute);
+				Activite Private1 = new Activite(new Dates(8, 0, item.NumJour), new Dates(12, 0, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Eating", Cal.ListSpationaute);
+				Activite Private2 = new Activite(new Dates(14, 0, item.NumJour), new Dates(19, 0, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Private", Cal.ListSpationaute);
+				Activite Private3 = new Activite(new Dates(21, 0, item.NumJour), new Dates(23, 0, item.NumJour), new Coordonnees(new Point(), /* pictureBox1.Image,*/ "COUCOU"), "Private", Cal.ListSpationaute);
 
                 item.ListActiviteJournee.Add(Sleeping1);
 

@@ -41,6 +41,11 @@ namespace PI_Mars_Mission_Control
             }
         }
 
+		public Coordonnees()
+		{
+
+		}
+
         public Coordonnees(Point point, /*Image Icone,*/ string descriptif)
         {
             this.Position = point;

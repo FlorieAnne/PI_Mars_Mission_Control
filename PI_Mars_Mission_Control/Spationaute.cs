@@ -22,10 +22,5 @@ namespace PI_Mars_Mission_Control
 			{
 			}
 		}
-
-		public List<Activite> getActiviteSpationaute()
-		{
-			throw new System.NotImplementedException();
-		}
 	}
 }
