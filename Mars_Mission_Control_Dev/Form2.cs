@@ -119,7 +119,8 @@ namespace PI_Mars_Mission_Control
                 BtnActi.Size = new Size(200, listTailles[i]);
                 BtnActi.Text = (jourActuel.ListActiviteJournee[i].TexteDescritpif);
                 BtnActi.Location = (new Point(posX, posY + (jourActuel.ListActiviteJournee[i].HeureDebut.heure * 6 + jourActuel.ListActiviteJournee[i].HeureDebut.minute / 10) * _taille10minPixel));
-                BtnActi.Name = "boutonActivites";
+                BtnActi.Tag = jourActuel.ListActiviteJournee[i];                
+                BtnActi.Name = jourActuel.ListActiviteJournee[i].HeureDebut.ToString();
 
                 Label label = new Label();
                 label.Name = "labelActivites";
@@ -128,6 +129,7 @@ namespace PI_Mars_Mission_Control
 
                 this.panelActivites.Controls.Add(BtnActi);
                 this.panelActivites.Controls.Add(label);
+                BtnActi.Click += activite_Click;
             }
         }
 
@@ -143,11 +145,12 @@ namespace PI_Mars_Mission_Control
 
         private void activite_Click(object sender, EventArgs e)
         {
-            int NumJour = 0;
-            NumJour = int.Parse(((Button)sender).Text.ToString());
+            //string DebutActi = ((Button)sender).Name.ToString();
+            Activite btn_acti = ((Button)sender).Tag as Activite;
 
-            Form3 f3 = new Form3();
-            f3.ShowDialog();
+            Form3 f3 = new Form3(this.calendrierActuel, this.calendrierActuel.ListJournees.ElementAt(jourActuel.NumJour), btn_acti);            
+            DialogResult dialogresult = f3.ShowDialog();
+            f3.Dispose();
         }
 
 #endregion

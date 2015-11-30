@@ -11,9 +11,12 @@ namespace PI_Mars_Mission_Control
 {
     public partial class Form3 : Form
     {
-        public Form3()
+        public Form3(Calendrier calendrier, Journee jourActuel, Activite actiActuelle)
         {
             InitializeComponent();
+            this.labelJ.Text = jourActuel.ToString();
+            this.labelActi.Text = actiActuelle.TexteDescritpif.ToString();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -157,9 +157,13 @@ namespace PI_Mars_Mission_Control
         {
             int NumJour = 0;
             NumJour = int.Parse(((Button)sender).Text.ToString());
-            Form2 f2 = new Form2(this.Cal ,this.Cal.ListJournees.ElementAt(NumJour));
-            this.Hide();
-            f2.Show();            
+            
+            using (var f2 = new Form2(this.Cal ,this.Cal.ListJournees.ElementAt(NumJour)))
+            {
+                f2.FormClosing += delegate { this.Show(); };
+                this.Hide();
+                f2.ShowDialog();
+            }                        
         }
 
 
