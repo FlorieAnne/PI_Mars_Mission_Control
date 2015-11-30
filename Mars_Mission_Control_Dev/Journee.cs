@@ -156,15 +156,19 @@ namespace PI_Mars_Mission_Control
 			}
 			return lst_periode;
 		}
-
-		//public List<Journee> rechercheLieuExploration(Coordonnees lieu, int heureDeb, int heureFin)
-		//{
-		//    lst_periode=selectionPeriode(heureDeb, heureFin);
-		//    foreach(Activite uneActivite in lst_periode)
-		//    {
-		//        if 
-		//    }
-		//}
+        public List<Activite> rechercheLieuExploration(Point hg, Point bd, int heureDeb, int heureFin)
+            // hg : point en haut à gauche du rectangle dans lequel on veut chercher
+            // bd : point en bas à droite du rectangle dans lequel on veut chercher
+        {
+            List<Activite> listPeriode=selectionPeriode(heureDeb, heureFin);
+            List<Activite>  listResult = listPeriode.FindAll(
+            delegate(Activite act)
+            {
+                return (act.Lieu.Position.X>=hg.X && act.Lieu.Position.X<=bd.X && act.Lieu.Position.Y<=hg.Y && act.Lieu.Position.Y>=bd.Y);
+            }
+            );
+            return listResult;
+        }
 		        
     }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using System.Drawing;
+
 using System.IO;
 using System.Xml.Serialization;
 
@@ -96,14 +98,26 @@ namespace PI_Mars_Mission_Control
             return DateM;
         }
 
-		//public List<Journee> rechercheLieuExploration(Coordonnees lieu, int jourDeb, int jourFin)
-		//{
-		//    List<Journee> list_periode = selectionPeriode(jourDeb, jourFin);
-		//    foreach(Journee uneJournee in list_periode)
-		//    {
-				
-		//    }			
-		//}
+        public List<Activite> rechercheLieuExploration(Point hg, Point bd, int jourdeb, int jourfin)
+        {
+            List<Journee> listPeriode = selectionPeriode(jourdeb, jourfin);
+            List<Activite> listResult = new List<Activite>();
+            foreach (Journee uneJournee in listPeriode)
+            {
+                listResult.AddRange(uneJournee.rechercheLieuExploration(hg, bd, 0, 0));
+            }
+            return listResult;
+        }
+        public List<Activite> rechercheLieuExploration(Point hg, Point bd, Dates jourdeb, Dates jourfin)
+        {
+            List<Journee> listPeriode = selectionPeriode(jourdeb.jour, jourfin.jour);
+            List<Activite> listResult = new List<Activite>();
+            foreach (Journee uneJournee in listPeriode)
+            {
+                listResult.AddRange(uneJournee.rechercheLieuExploration(hg, bd, 0, 0));
+            }
+            return listResult;
+        }
 
 
 #endregion
