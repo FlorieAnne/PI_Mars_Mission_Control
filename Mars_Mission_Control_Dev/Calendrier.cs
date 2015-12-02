@@ -110,18 +110,14 @@ namespace PI_Mars_Mission_Control
         }
         public List<Activite> rechercheLieuExploration(Point hg, Point bd, Dates jourdeb, Dates jourfin)
         {
-            List<Journee> listPeriode = selectionPeriode(jourdeb.jour, jourfin.jour);
-            List<Activite> listResult = new List<Activite>();
-            foreach (Journee uneJournee in listPeriode)
-            {
-                listResult.AddRange(uneJournee.rechercheLieuExploration(hg, bd, 0, 0));
-            }
-            return listResult;
+            return rechercheLieuExploration(hg, bd, jourdeb.heure, jourfin.heure);
+        }
+        public List<Activite> rechercheLieuExploration(Point pt, Dates jourdeb, Dates jourfin)
+        {
+            return rechercheLieuExploration(pt, jourdeb.heure, jourfin.heure);
         }
 
-
 #endregion
-
 
     }
 }
