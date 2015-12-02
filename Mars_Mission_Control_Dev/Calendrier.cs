@@ -57,18 +57,29 @@ namespace PI_Mars_Mission_Control
 #endregion
 
 
-        public Calendrier()
-        {
-            this.ListJournees = new List<Journee>();
-            this.ListActivite = new List<Activite>();
-            this.ListSpationaute = new List<Spationaute>();
-        }
+    public Calendrier()
+    {
+        this.ListJournees = new List<Journee>();
+        this.ListActivite = new List<Activite>();
+        this.ListSpationaute = new List<Spationaute>();
+    }
 
 
 
 #region méthodes
 
+        public void serializer()
+        {
+            XmlSerializer xs = new XmlSerializer(typeof(Calendrier));
+            Console.WriteLine(string.Format("Calendrier : enregistrement en cours..."));
+            // Ouverture de l'instance d'écriture en précisant le chemin du fichier
+            using (TextWriter writer = new StreamWriter("./..//..//InfoGenerales.xml"))
+            {
+                xs.Serialize(writer, this);
+            }
 
+            Console.WriteLine(string.Format("Calendrier : enregistrement réussi"));
+        }
         public List<Journee> selectionPeriode(int jourDeb, int jourFin)
         /* jourDeb, jourFin : numéro des JOURS, et pas les INDICES, correspondant aux extremités de la période
          * renvoie une liste contenant tous les jours de la période demandée.*/
@@ -114,10 +125,8 @@ namespace PI_Mars_Mission_Control
         }
         public List<Activite> rechercheLieuExploration(Point pt, Dates jourdeb, Dates jourfin)
         {
-            return rechercheLieuExploration(pt, jourdeb.heure, jourfin.heure);
+            return rechercheLieuExploration(pt, pt, jourdeb.heure, jourfin.heure);
         }
-
-#endregion
-
+        #endregion
     }
 }

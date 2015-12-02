@@ -51,10 +51,10 @@ namespace PI_Mars_Mission_Control
 		}
 			
 		
-#endregion
+        #endregion
+        #region constructeurs
 
-		// Constructeur 
-		public Journee(int nJour, Form1 f1)
+        public Journee(int nJour, Form1 f1)
 		{
 			f1 = new Form1();
 
@@ -92,11 +92,9 @@ namespace PI_Mars_Mission_Control
 			// ListActiviteJournee = Activite
 			CompteRendu = "";
         }
-				  
-		
-		// Méthodes
-
-		public void serializer()
+        #endregion
+        #region methodes
+        public void serializer()
 		{
 			XmlSerializer xs = new XmlSerializer(typeof(Journee));
 			// Ouverture de l'instance d'écriture en précisant le chemin du fichier
@@ -110,7 +108,7 @@ namespace PI_Mars_Mission_Control
 
 
         public List<Activite> checkActivite(Activite newActivite)
-        //on verifie si une activite empiète sur d'autres.
+        //on verifie si une activite empiète sur d'autres. Renvoie une liste contenant toutes les activités posant conflit.
         {
             List<Activite> lst_ActiviteConflit = new List<Activite>();
             foreach (Activite activite in ListActiviteJournee)
@@ -135,28 +133,46 @@ namespace PI_Mars_Mission_Control
         }
 
        
-		public void rechercheJourActivite(string mot)
+		public void rechercheNomActivite(string mot, Dates dateDeb, Dates dateFin)
 		{
-			/*for (int i=0;i<.i]();i++)
-			{
-				if (mot==lst_ActiviteJournee[]
-			} il doit y avoir un truc déjà fait pour rechercher*/
+            List<Activite> listPeriode = selectionPeriode(dateDeb, dateFin);
+            List<Activite> listResult = listPeriode.FindAll(
+            delegate(Activite act)
+            {
+                return (act.Nom==mot);
+            }
+            );
 		}
+        public void rechercheTexteActivite(string mot, Dates dateDeb, Dates dateFin)
+        {
+            List<Activite> listPeriode = selectionPeriode(dateDeb, dateFin);
+            List<Activite> listResult = listPeriode.FindAll(
+            delegate(Activite act)
+            {
+                return (act.TexteDescritpif.Contains(mot));
+            }
+            );
+        }
 
 
-		public List<Activite> selectionPeriode(int heureDeb, int heureFin)
+		public List<Activite> selectionPeriode(Dates heureDeb, Dates heureFin)
 		{
 			List<Activite> lst_periode = new List<Activite>();
 			foreach (Activite uneActivite in ListActiviteJournee)
 			{
-				if (uneActivite.HeureFin.heure > heureDeb || uneActivite.HeureDebut.heure < heureFin)
+				if (uneActivite.HeureFin.heure > heureDeb.heure || uneActivite.HeureDebut.heure < heureFin.heure)
 				{
 					lst_periode.Add(uneActivite);
 				}
 			}
 			return lst_periode;
 		}
-        public List<Activite> rechercheLieuExploration(Point hg, Point bd, int heureDeb, int heureFin)
+        public List<Activite> selectionPeriode(int heureDeb, int heureFin)
+        {
+            var datesDuree = this.duree(heureDeb, heureFin);
+            return selectionPeriode(datesDuree.Item1, datesDuree.Item2);
+        }
+        public List<Activite> rechercheLieuExploration(Point hg, Point bd, Dates heureDeb, Dates heureFin)
             // hg : point en haut à gauche du rectangle dans lequel on veut chercher
             // bd : point en bas à droite du rectangle dans lequel on veut chercher
         {
@@ -169,6 +185,19 @@ namespace PI_Mars_Mission_Control
             );
             return listResult;
         }
-		        
+        public List<Activite> rechercheLieuExploration(Point hg, Point bd, int heureDeb, int heureFin)
+        {
+            var datesDuree = this.duree(heureDeb, heureFin);
+            return rechercheLieuExploration(hg, bd, datesDuree.Item1, datesDuree.Item2);
+        }
+        private Tuple<Dates, Dates> duree(int heureDeb, int heureFin)
+        {
+            Dates dateDeb = new Dates(this.NumJour, heureDeb, 0);
+            Dates dateFin;
+            if (heureFin == 24) dateFin = new Dates(this.NumJour, heureFin, 40);
+            else dateFin = new Dates(this.NumJour, heureFin, 0);
+            return Tuple.Create(dateDeb, dateFin);
+        }
+        #endregion
     }
 }
