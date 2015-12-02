@@ -49,6 +49,7 @@
     <Compile Include="Activite.cs" />
     <Compile Include="Calendrier.cs" />
     <Compile Include="Carte.cs" />
+    <Compile Include="Constante.cs" />
     <Compile Include="Coordonnees.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

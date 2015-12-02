@@ -6,7 +6,9 @@ using System.Text;
 using System.IO;
 using System.Xml.Serialization;
 
+using System.Text.RegularExpressions;
 
+// SAM
 namespace PI_Mars_Mission_Control
 {
 	[XmlRoot("activite")]
@@ -15,12 +17,42 @@ namespace PI_Mars_Mission_Control
 
 #region Accesseurs & Propriétés
 
+		private string _nomActivite;
+		[XmlElement("Nom")]
+		public string NomActivite
+		{
+			get { return _nomActivite; }
+			set 
+			{
+				// La chaine de caractère en entrée va être comparée à l'expression régulière regex
+				//Regex regex = new Regex(@"[A-Za-z]");
+				//Match match = regex.Match(NomActivite);
+				//if (match.Success)
+				//{
+				//    _nomActivite = value;
+				//}
+				//else throw new System.ArgumentException("le nom de l'activité ne doit être composé que de caractère alphabétique");		
+
+				_nomActivite = value;
+			}
+		}
+
 		private Dates _heureDebut;
 		[XmlElement("HeureDebut")]
 		public Dates HeureDebut
 		{
 			get { return _heureDebut; }
-			set { _heureDebut = value; }
+			set 
+			{
+				if (HeureDebut == null)
+				{
+					_heureDebut = null;
+				}
+				else
+				{
+					_heureDebut = value;
+				}
+			}
 		}
 
 		private Dates _heureFin;
@@ -28,7 +60,17 @@ namespace PI_Mars_Mission_Control
 		public Dates HeureFin
 		{
 			get { return _heureFin; }
-			set { _heureFin = value; }
+			set 
+			{
+				if (HeureFin == null)
+				{
+					_heureFin = null;
+				}
+				else
+				{
+					_heureFin = value;
+				}
+			}
 		}
 
 		private Coordonnees _lieu;
@@ -39,12 +81,12 @@ namespace PI_Mars_Mission_Control
 			set { _lieu = value; }
 		}
 		
-		private string _texteDescriptif;
-		[XmlElement("TexteDescriptif")]
-		public string TexteDescritpif
+		private string _description;
+		[XmlElement("Description")]
+		public string Descritpion
 		{
-			get { return _texteDescriptif; }
-			set { _texteDescriptif = value; }
+			get { return _description; }
+			set { _description = value; }
 		}
 		
 		private List<Spationaute> _listSpationaute;
@@ -60,30 +102,19 @@ namespace PI_Mars_Mission_Control
 
 
 #region constructeur
+		
 
-		// A MODIFIER 
-		public Activite(Dates hdeb,Dates hfin, Coordonnees lieu, string texte, List<Spationaute> listSpatio)
+		public Activite(String nom, Dates hdeb,Dates hfin, Coordonnees lieu, string desc, List<Spationaute> listSpatio)
 		{
-			if (hdeb == null)
-			{
-				this.HeureDebut = null;
-			}
-			else
-			{
-				this.HeureDebut = hdeb;
-			}
+			this.NomActivite = nom;
 
-			if (hfin == null)
-			{
-				this.HeureFin = null;
-			}
-			else
-			{
-				this.HeureFin = hfin;
-			}
-
+			this.HeureDebut = hdeb;
+			this.HeureFin = hfin;
+			
 			this.Lieu = lieu;
-			this.TexteDescritpif = texte;
+			this.Descritpion = desc;
+
+			this.ListSpationaute = listSpatio;
 
 		}
 
@@ -91,20 +122,7 @@ namespace PI_Mars_Mission_Control
 
 
 #region méthodes
-
-		public void serializer()
-		{
-			XmlSerializer xs = new XmlSerializer(typeof(Activite));
-			// Ouverture de l'instance d'écriture en précisant le chemin du fichier
-			using (TextWriter writer = new StreamWriter("./..//..//InfoGenerales.xml"))
-			{
-				xs.Serialize(writer, this);
-			}
-
-			Console.WriteLine(string.Format("Restaurant : enregistrement réussi"));
-		}
-
-
+				
 		public void enregister()
         {
             throw new System.NotImplementedException();

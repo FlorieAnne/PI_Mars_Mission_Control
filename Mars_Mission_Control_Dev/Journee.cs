@@ -9,7 +9,7 @@ using System.Drawing;
 using System.IO;
 using System.Xml.Serialization;
 
-	
+// ANTOINE	
 namespace PI_Mars_Mission_Control
 {
 	[XmlRoot("Journees")]
@@ -56,9 +56,10 @@ namespace PI_Mars_Mission_Control
 		// Constructeur 
 		public Journee(int nJour, Form1 f1)
 		{
-			f1 = new Form1();
-
 			CompteRendu = "";
+
+			ListActiviteJournee = new List<Activite>();
+			
 			Dates h0 = new Dates(nJour, 0, 0);
 			Dates h7 = new Dates(nJour, 7, 0);
 			Dates h8 = new Dates(nJour, 8, 0);
@@ -68,47 +69,26 @@ namespace PI_Mars_Mission_Control
 			Dates h21 = new Dates(nJour, 21, 0);
 			Dates h23 = new Dates(nJour, 23, 0);
 			Dates h24_40 = new Dates(nJour, 24, 40);
-									
+
 			Coordonnees baseMission = new Coordonnees();
-			string sleeping = "sleeping";
-			string eating = "eating";
-			string prive = "Prive";
+			string sleeping = "Sleeping";
+			string eating = "Eating";
+			string prive = "Private";
 
 			//on ajoute les activites par defaut de la journee.
-			ListActiviteJournee.Add(new Activite(h0, h7, baseMission, sleeping, f1.Cal.ListSpationaute));
-			ListActiviteJournee.Add(new Activite(h7, h8, baseMission, eating, f1.Cal.ListSpationaute));
-			ListActiviteJournee.Add(new Activite(h8, h12, baseMission, prive, f1.Cal.ListSpationaute));
-			ListActiviteJournee.Add(new Activite(h12, h14, baseMission, eating, f1.Cal.ListSpationaute));
-			ListActiviteJournee.Add(new Activite(h14, h19, baseMission, prive, f1.Cal.ListSpationaute));
-			ListActiviteJournee.Add(new Activite(h19, h21, baseMission, eating, f1.Cal.ListSpationaute));
-			ListActiviteJournee.Add(new Activite(h21, h23, baseMission, prive, f1.Cal.ListSpationaute));
-			ListActiviteJournee.Add(new Activite(h23, h24_40, baseMission, sleeping, f1.Cal.ListSpationaute));
+			ListActiviteJournee.Add(new Activite(sleeping, h0, h7, baseMission, CompteRendu, f1.Cal.ListSpationaute));
+			ListActiviteJournee.Add(new Activite(eating, h7, h8, baseMission, CompteRendu, f1.Cal.ListSpationaute));
+			ListActiviteJournee.Add(new Activite(prive, h8, h12, baseMission, CompteRendu, f1.Cal.ListSpationaute));
+			ListActiviteJournee.Add(new Activite(eating, h12, h14, baseMission, CompteRendu, f1.Cal.ListSpationaute));
+			ListActiviteJournee.Add(new Activite(prive, h14, h19, baseMission, CompteRendu, f1.Cal.ListSpationaute));
+			ListActiviteJournee.Add(new Activite(eating, h19, h21, baseMission, CompteRendu, f1.Cal.ListSpationaute));
+			ListActiviteJournee.Add(new Activite(prive, h21, h23, baseMission, CompteRendu, f1.Cal.ListSpationaute));
+			ListActiviteJournee.Add(new Activite(sleeping, h23, h24_40, baseMission, CompteRendu, f1.Cal.ListSpationaute));
 		}
-
-		public Journee(int index, List<Journee> listeJournee)
-        {					
-			NumJour = index;
-            listeJournee.Add(this);
-			// ListActiviteJournee = Activite
-			CompteRendu = "";
-        }
-				  
 		
-		// Méthodes
 
-		public void serializer()
-		{
-			XmlSerializer xs = new XmlSerializer(typeof(Journee));
-			// Ouverture de l'instance d'écriture en précisant le chemin du fichier
-			using (TextWriter writer = new StreamWriter("./..//..//InfoGenerales.xml"))
-			{
-				xs.Serialize(writer, this);
-			}
-
-			Console.WriteLine(string.Format("Journee : enregistrement réussi"));
-		}
-
-
+#region	Méthodes
+		
         public List<Activite> checkActivite(Activite newActivite)
         //on verifie si une activite empiète sur d'autres.
         {
@@ -121,7 +101,7 @@ namespace PI_Mars_Mission_Control
                     {
                         foreach (Spationaute spatioNewActivite in newActivite.ListSpationaute)
                         {
-                            if (spatioNewActivite==spatioOccupe)
+                            if (spatioNewActivite == spatioOccupe)
                             {
                                 lst_ActiviteConflit.Add(activite);
                             }
@@ -165,6 +145,8 @@ namespace PI_Mars_Mission_Control
 		//        if 
 		//    }
 		//}
-		        
-    }
+
+#endregion
+
+	}
 }

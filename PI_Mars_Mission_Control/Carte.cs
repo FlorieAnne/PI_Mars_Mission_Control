@@ -14,7 +14,7 @@ namespace PI_Mars_Mission_Control
             throw new System.NotImplementedException();
         }
 
-        public static List<Object> ListIcone
+		public static System.Collections.Generic.List<Image> ListIcone
         {
             get
             {
