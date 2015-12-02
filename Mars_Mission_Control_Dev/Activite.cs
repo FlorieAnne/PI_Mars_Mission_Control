@@ -73,6 +73,14 @@ namespace PI_Mars_Mission_Control
 			}
 		}
 
+        private string _nom;
+        [XmlElement("nom")]
+        public string Nom
+        {
+            get { return _nom; }
+            set { _nom = value; }
+        }
+
 		private Coordonnees _lieu;
 		[XmlElement("Coordonnees")]
 		public Coordonnees Lieu

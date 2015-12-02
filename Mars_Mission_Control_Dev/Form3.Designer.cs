@@ -31,8 +31,8 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.labelActi = new System.Windows.Forms.Label();
+            this.labelJ = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -70,23 +70,23 @@
             this.label1.TabIndex = 11;
             this.label1.Text = "Activité ";
             // 
-            // label2
+            // labelActi
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(214, 139);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "label2";
+            this.labelActi.AutoSize = true;
+            this.labelActi.Location = new System.Drawing.Point(214, 139);
+            this.labelActi.Name = "labelActi";
+            this.labelActi.Size = new System.Drawing.Size(35, 13);
+            this.labelActi.TabIndex = 12;
+            this.labelActi.Text = "label2";
             // 
-            // label3
+            // labelJ
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(480, 139);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(12, 13);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "J";
+            this.labelJ.AutoSize = true;
+            this.labelJ.Location = new System.Drawing.Point(480, 139);
+            this.labelJ.Name = "labelJ";
+            this.labelJ.Size = new System.Drawing.Size(12, 13);
+            this.labelJ.TabIndex = 14;
+            this.labelJ.Text = "J";
             // 
             // label4
             // 
@@ -155,16 +155,16 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 657);
+            this.ClientSize = new System.Drawing.Size(1033, 623);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.labelJ);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.labelActi);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button3);
@@ -180,8 +180,8 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelActi;
+        private System.Windows.Forms.Label labelJ;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;

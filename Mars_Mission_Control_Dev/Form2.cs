@@ -12,38 +12,38 @@ namespace PI_Mars_Mission_Control
     public partial class Form2 : Form
     {
         private Journee jourActuel;
+        private Calendrier calendrierActuel;
         private int _taille10minPixel;
         private List<Activite> listActi = new List<Activite>(); // liste des activités
         List<int> listTailles = new List<int>(); // taille en pixel d'une activité
         List<int> listEcart = new List<int>(); // ecart entre 2 activités
         
-        //SAM Récupération du Form1 pour accéder à ses Propriétés
-        Form1 f1 = new Form1();
-        
 
-        public Form2(int jour)
+        public Form2(Calendrier calendrier,Journee jour)
         {
             InitializeComponent();
-
-            jourActuel = f1.Cal.ListJournees.ElementAt(jour);
-
-            this.tagJourActuel.Text = jour.ToString();
-            this.tagJourActuel2.Text = jour.ToString();            
+            jourActuel = jour;
+            calendrierActuel = calendrier;
+            this.tagJourActuel.Text = jour.NumJour.ToString();
+            this.tagJourActuel2.Text = jour.NumJour.ToString();            
             _taille10minPixel = 5; // 10 minutes = 5 pixel
             this.richTextBox2.Text = jourActuel.CompteRendu;
 
             afficheBoutons();
         }
 
+#region Méthodes
+
+        public Journee journee { get; set; }
+
         private void retourCalendrier_Click(object sender, EventArgs e)
-        {
-            f1.Show();
+        {            
             this.Close();
         }
 
         private void rafraichirPage(int jour)
         {               
-            jourActuel = f1.Cal.ListJournees.ElementAt(jour);       
+            jourActuel = calendrierActuel.ListJournees.ElementAt(jour);       
 
             miseAJourJour(jourActuel.NumJour);
             richTextBox2.Text = jourActuel.CompteRendu;
@@ -82,8 +82,6 @@ namespace PI_Mars_Mission_Control
 
         }
 
-        public Journee journee { get; set; }
-
         private int tailleActivite(Activite Activitee)
         {
             return ((Activitee.HeureFin.heure - Activitee.HeureDebut.heure) * 60 + (Activitee.HeureFin.minute - Activitee.HeureDebut.minute)) / 10 * _taille10minPixel;
@@ -121,7 +119,8 @@ namespace PI_Mars_Mission_Control
                 BtnActi.Size = new Size(200, listTailles[i]);
                 BtnActi.Text = (jourActuel.ListActiviteJournee[i].Descritpion);
                 BtnActi.Location = (new Point(posX, posY + (jourActuel.ListActiviteJournee[i].HeureDebut.heure * 6 + jourActuel.ListActiviteJournee[i].HeureDebut.minute / 10) * _taille10minPixel));
-                BtnActi.Name = "boutonActivites";
+                BtnActi.Tag = jourActuel.ListActiviteJournee[i];                
+                BtnActi.Name = jourActuel.ListActiviteJournee[i].HeureDebut.ToString();
 
                 Label label = new Label();
                 label.Name = "labelActivites";
@@ -130,6 +129,7 @@ namespace PI_Mars_Mission_Control
 
                 this.panelActivites.Controls.Add(BtnActi);
                 this.panelActivites.Controls.Add(label);
+                BtnActi.Click += activite_Click;
             }
         }
 
@@ -141,8 +141,19 @@ namespace PI_Mars_Mission_Control
         private void richTextBox2_TextChanged(object sender, EventArgs e)
         {
 
-        }      
+        }
 
+        private void activite_Click(object sender, EventArgs e)
+        {
+            //string DebutActi = ((Button)sender).Name.ToString();
+            Activite btn_acti = ((Button)sender).Tag as Activite;
+
+            Form3 f3 = new Form3(this.calendrierActuel, this.calendrierActuel.ListJournees.ElementAt(jourActuel.NumJour), btn_acti);            
+            DialogResult dialogresult = f3.ShowDialog();
+            f3.Dispose();
+        }
+
+#endregion
 
     }
 }
