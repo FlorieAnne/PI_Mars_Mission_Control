@@ -76,26 +76,15 @@ namespace PI_Mars_Mission_Control
 			string prive = "Private";
 
 			//on ajoute les activites par defaut de la journee.
-<<<<<<< HEAD
-			ListActiviteJournee.Add(new Activite(sleeping, h0, h7, baseMission, CompteRendu, f1.Cal.ListSpationaute));
-			ListActiviteJournee.Add(new Activite(eating, h7, h8, baseMission, CompteRendu, f1.Cal.ListSpationaute));
-			ListActiviteJournee.Add(new Activite(prive, h8, h12, baseMission, CompteRendu, f1.Cal.ListSpationaute));
-			ListActiviteJournee.Add(new Activite(eating, h12, h14, baseMission, CompteRendu, f1.Cal.ListSpationaute));
-			ListActiviteJournee.Add(new Activite(prive, h14, h19, baseMission, CompteRendu, f1.Cal.ListSpationaute));
-			ListActiviteJournee.Add(new Activite(eating, h19, h21, baseMission, CompteRendu, f1.Cal.ListSpationaute));
-			ListActiviteJournee.Add(new Activite(prive, h21, h23, baseMission, CompteRendu, f1.Cal.ListSpationaute));
-			ListActiviteJournee.Add(new Activite(sleeping, h23, h24_40, baseMission, CompteRendu, f1.Cal.ListSpationaute));
-		}
-		
-=======
-            ListActiviteJournee.Add(new Activite(h0, h7, baseMission, sleeping, listeSpationaute));
-            ListActiviteJournee.Add(new Activite(h7, h8, baseMission, eating, listeSpationaute));
-            ListActiviteJournee.Add(new Activite(h8, h12, baseMission, prive, listeSpationaute));
-            ListActiviteJournee.Add(new Activite(h12, h14, baseMission, eating, listeSpationaute));
-            ListActiviteJournee.Add(new Activite(h14, h19, baseMission, prive, listeSpationaute));
-            ListActiviteJournee.Add(new Activite(h19, h21, baseMission, eating, listeSpationaute));
-            ListActiviteJournee.Add(new Activite(h21, h23, baseMission, prive, listeSpationaute));
-            ListActiviteJournee.Add(new Activite(h23, h24_40, baseMission, sleeping, listeSpationaute));
+
+			ListActiviteJournee.Add(new Activite(sleeping, h0, h7, baseMission, CompteRendu, listeSpationaute));
+			ListActiviteJournee.Add(new Activite(eating, h7, h8, baseMission, CompteRendu, listeSpationaute));
+			ListActiviteJournee.Add(new Activite(prive, h8, h12, baseMission, CompteRendu, listeSpationaute));
+			ListActiviteJournee.Add(new Activite(eating, h12, h14, baseMission, CompteRendu, listeSpationaute));
+			ListActiviteJournee.Add(new Activite(prive, h14, h19, baseMission, CompteRendu, listeSpationaute));
+			ListActiviteJournee.Add(new Activite(eating, h19, h21, baseMission, CompteRendu, listeSpationaute));
+			ListActiviteJournee.Add(new Activite(prive, h21, h23, baseMission, CompteRendu, listeSpationaute));
+			ListActiviteJournee.Add(new Activite(sleeping, h23, h24_40, baseMission, CompteRendu, listeSpationaute));
 		}
 
 		public Journee(int index, List<Journee> listeJournee)
@@ -106,20 +95,7 @@ namespace PI_Mars_Mission_Control
 			CompteRendu = "";
         }
         #endregion
-        #region methodes
-        public void serializer()
-		{
-			XmlSerializer xs = new XmlSerializer(typeof(Journee));
-			// Ouverture de l'instance d'écriture en précisant le chemin du fichier
-			using (TextWriter writer = new StreamWriter("./..//..//InfoGenerales.xml"))
-			{
-				xs.Serialize(writer, this);
-			}
-
-			Console.WriteLine(string.Format("Journee : enregistrement réussi"));
-		}
-
->>>>>>> origin/master
+		
 
 #region	Méthodes
 		
@@ -183,21 +159,11 @@ namespace PI_Mars_Mission_Control
 			}
 			return lst_periode;
 		}
-<<<<<<< HEAD
 
-		//public List<Journee> rechercheLieuExploration(Coordonnees lieu, int heureDeb, int heureFin)
-		//{
-		//    lst_periode=selectionPeriode(heureDeb, heureFin);
-		//    foreach(Activite uneActivite in lst_periode)
-		//    {
-		//        if 
-		//    }
-		//}
 
 #endregion
 
-	}
-=======
+
         public List<Activite> selectionPeriode(int heureDeb, int heureFin)
         {
             var datesDuree = this.duree(heureDeb, heureFin);
@@ -229,7 +195,6 @@ namespace PI_Mars_Mission_Control
             else dateFin = new Dates(this.NumJour, heureFin, 0);
             return Tuple.Create(dateDeb, dateFin);
         }
-        #endregion
+
     }
->>>>>>> origin/master
 }

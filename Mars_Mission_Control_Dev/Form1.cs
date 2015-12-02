@@ -48,17 +48,12 @@ namespace PI_Mars_Mission_Control
         public Form1()
         {
             InitializeComponent();
-<<<<<<< HEAD
-		
-=======
 
-			//Création d'un calendrier pour gérer la liste des journées (plus en statique dans la classe Journee)			
->>>>>>> origin/master
             Cal = new Calendrier();            
 				
 			for (int i = 0; i < 500; i++)
 			{
-				Journee jour = new Journee(i,this);
+				Journee jour = new Journee(i,Cal.ListSpationaute);
                 jour.CompteRendu = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque dolore magnam aliquam quaerat voluptatem. Ut enim quo voluptas nulla pariatur?";
             }
 			
