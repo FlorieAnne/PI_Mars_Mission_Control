@@ -54,10 +54,8 @@ namespace PI_Mars_Mission_Control
         #endregion
         #region constructeurs
 
-        public Journee(int nJour, Form1 f1)
+        public Journee(int nJour, List<Spationaute> listeSpationaute)
 		{
-			f1 = new Form1();
-
 			CompteRendu = "";
 			Dates h0 = new Dates(nJour, 0, 0);
 			Dates h7 = new Dates(nJour, 7, 0);
@@ -75,14 +73,14 @@ namespace PI_Mars_Mission_Control
 			string prive = "Prive";
 
 			//on ajoute les activites par defaut de la journee.
-			ListActiviteJournee.Add(new Activite(h0, h7, baseMission, sleeping, f1.Cal.ListSpationaute));
-			ListActiviteJournee.Add(new Activite(h7, h8, baseMission, eating, f1.Cal.ListSpationaute));
-			ListActiviteJournee.Add(new Activite(h8, h12, baseMission, prive, f1.Cal.ListSpationaute));
-			ListActiviteJournee.Add(new Activite(h12, h14, baseMission, eating, f1.Cal.ListSpationaute));
-			ListActiviteJournee.Add(new Activite(h14, h19, baseMission, prive, f1.Cal.ListSpationaute));
-			ListActiviteJournee.Add(new Activite(h19, h21, baseMission, eating, f1.Cal.ListSpationaute));
-			ListActiviteJournee.Add(new Activite(h21, h23, baseMission, prive, f1.Cal.ListSpationaute));
-			ListActiviteJournee.Add(new Activite(h23, h24_40, baseMission, sleeping, f1.Cal.ListSpationaute));
+            ListActiviteJournee.Add(new Activite(h0, h7, baseMission, sleeping, listeSpationaute));
+            ListActiviteJournee.Add(new Activite(h7, h8, baseMission, eating, listeSpationaute));
+            ListActiviteJournee.Add(new Activite(h8, h12, baseMission, prive, listeSpationaute));
+            ListActiviteJournee.Add(new Activite(h12, h14, baseMission, eating, listeSpationaute));
+            ListActiviteJournee.Add(new Activite(h14, h19, baseMission, prive, listeSpationaute));
+            ListActiviteJournee.Add(new Activite(h19, h21, baseMission, eating, listeSpationaute));
+            ListActiviteJournee.Add(new Activite(h21, h23, baseMission, prive, listeSpationaute));
+            ListActiviteJournee.Add(new Activite(h23, h24_40, baseMission, sleeping, listeSpationaute));
 		}
 
 		public Journee(int index, List<Journee> listeJournee)

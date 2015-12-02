@@ -34,7 +34,7 @@ namespace PI_Mars_Mission_Control
         #region constructeurs
         public Coordonnees()
 		{
-            Position = 0;
+            Position = new Point();
             Icone = null;
             Descriptif = "";
 		}
@@ -42,12 +42,14 @@ namespace PI_Mars_Mission_Control
         {
             Position = point;
         }
-
-        public Coordonnees(Point point, Image Icone, string descriptif)
+        public Coordonnees(Point point, string descriptif):this()
         {
             this.Position = point;
-            this.Icone = Icone;
             this.Descriptif = descriptif;
+        }
+        public Coordonnees(Point point, Image Icone, string descriptif):this(point, descriptif)
+        {
+            this.Icone = Icone;
         }
         #endregion
         #region methodes

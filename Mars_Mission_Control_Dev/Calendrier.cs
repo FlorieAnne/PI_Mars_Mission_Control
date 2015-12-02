@@ -63,9 +63,12 @@ namespace PI_Mars_Mission_Control
         this.ListActivite = new List<Activite>();
         this.ListSpationaute = new List<Spationaute>();
     }
-
-
-
+    public Calendrier(List<Journee> listeJournees, List<Activite> listeActivites, List<Spationaute> listeSpationautes)
+    {
+        ListJournees = listeJournees;
+        ListActivite = listeActivites;
+        ListSpationaute = listeSpationautes;
+    }
 #region méthodes
 
         public void serializer()
