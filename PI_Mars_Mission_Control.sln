@@ -12,8 +12,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCalendrier2", "TestCalendrier2\TestCalendrier2.csproj", "{49EF479E-A0DA-442C-930B-4C490F5D3216}"
-EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = PI_Mars_Mission_Control.vsmdi
@@ -47,16 +45,6 @@ Global
 		{AEBDE880-E81C-4BCA-B03C-BF93B8B65B99}.Release|Mixed Platforms.Build.0 = Release|x86
 		{AEBDE880-E81C-4BCA-B03C-BF93B8B65B99}.Release|x86.ActiveCfg = Release|x86
 		{AEBDE880-E81C-4BCA-B03C-BF93B8B65B99}.Release|x86.Build.0 = Release|x86
-		{49EF479E-A0DA-442C-930B-4C490F5D3216}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{49EF479E-A0DA-442C-930B-4C490F5D3216}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{49EF479E-A0DA-442C-930B-4C490F5D3216}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{49EF479E-A0DA-442C-930B-4C490F5D3216}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{49EF479E-A0DA-442C-930B-4C490F5D3216}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{49EF479E-A0DA-442C-930B-4C490F5D3216}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{49EF479E-A0DA-442C-930B-4C490F5D3216}.Release|Any CPU.Build.0 = Release|Any CPU
-		{49EF479E-A0DA-442C-930B-4C490F5D3216}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{49EF479E-A0DA-442C-930B-4C490F5D3216}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{49EF479E-A0DA-442C-930B-4C490F5D3216}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
